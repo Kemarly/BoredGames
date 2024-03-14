@@ -1,5 +1,6 @@
 package com.example.boredgames
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -7,7 +8,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
 
     private lateinit var zoomInAnimation: Animation
@@ -15,6 +18,8 @@ class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Thread.sleep(5000 )
+        installSplashScreen()
         setContentView(R.layout.activity_splash_screen)
 
         zoomInAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.zoom)
