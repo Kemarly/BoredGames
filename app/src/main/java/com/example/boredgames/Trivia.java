@@ -89,45 +89,64 @@ public class Trivia extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest_ = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try {
-                   // String correct_answer = response.getString("correct_answer");
+
+             //   boolean flag = false;
+
+             //   while (!flag) {
+                    try {
+                        // String correct_answer = response.getString("correct_answer");
 
 
-                    JSONArray resultsArray = response.getJSONArray("results");
-                    JSONObject resultObject = resultsArray.getJSONObject(0);
-                    String correctAnswer = resultObject.getString("correct_answer");
-                    String question = resultObject.getString("question");
-                    JSONArray incorrectAnswersArray = resultObject.getJSONArray("incorrect_answers");
-                   // String incorrect_answer1 = resultObject.getString("incorrect_answers");
+                        JSONArray resultsArray = response.getJSONArray("results");
+                       // if (resultsArray.length() > 0) {
+                            JSONObject resultObject = resultsArray.getJSONObject(0);
+                            String correctAnswer = resultObject.getString("correct_answer");
+                            String question = resultObject.getString("question");
+                            //String check = resultObject.getString("response_code");
+                            JSONArray incorrectAnswersArray = resultObject.getJSONArray("incorrect_answers");
+                            // String incorrect_answer1 = resultObject.getString("incorrect_answers");
 
-                    for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
-                        String incorrectAnswer = incorrectAnswersArray.getString(i);
-                        if (i == 0) {
-                            Answer2.setText(incorrectAnswer);
-                        } else if (i == 1) {
-                            Answer3.setText(incorrectAnswer);
-                        } else if(i == 2){
-                            Answer4.setText(incorrectAnswer);
-                        }
+                            Ques.setText(question);
+                            Answer1.setText(correctAnswer);
+
+
+                            for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
+                                String incorrectAnswer = incorrectAnswersArray.getString(i);
+                                if (i == 0) {
+                                    Answer2.setText(incorrectAnswer);
+                                } else if (i == 1) {
+                                    Answer3.setText(incorrectAnswer);
+                                } else if (i == 2) {
+                                    Answer4.setText(incorrectAnswer);
+                                }
+                            }
+                           // flag = true;
+                      //  } else {
+                        //    Ques.setText("No results found");
+                            // flag = true;
+                        //}
+
+                        //  tv.setText(correctAnswer);
+
+                        // Answer2.setText(incorrect_answer1);
+                        // tv.setText(correct_answer);
+
+
+                    } catch (JSONException e) {
+                        //   throw new RuntimeException(e);
+                        e.printStackTrace();
+                        Ques.setText("Error parsing JSON");
                     }
-
-
-                  //  tv.setText(correctAnswer);
-                    Ques.setText(question);
-                    Answer1.setText(correctAnswer);
-                   // Answer2.setText(incorrect_answer1);
-                   // tv.setText(correct_answer);
-
-
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Ques.setText("error");
-            }
+
+                  }, new Response.ErrorListener()
+
+                   {
+                       @Override
+                       public void onErrorResponse (VolleyError error){
+                       Ques.setText("error");
+                   }
+
         });
 
 
