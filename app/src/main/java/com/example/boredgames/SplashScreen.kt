@@ -30,34 +30,28 @@ class SplashScreen : AppCompatActivity() {
 
         zoomInAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {}
-
             override fun onAnimationEnd(animation: Animation?) {
                 img.startAnimation(fadeOutAnimation)
             }
-
             override fun onAnimationRepeat(animation: Animation?) {}
         })
 
         fadeOutAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {}
-
             override fun onAnimationEnd(animation: Animation?) {
                 img.setImageResource(R.drawable.splash2)
                 img.startAnimation(zoomOutAnimation)
             }
-
             override fun onAnimationRepeat(animation: Animation?) {}
         })
 
         zoomOutAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {}
-
             override fun onAnimationEnd(animation: Animation?) {
                 val intent = Intent(this@SplashScreen, SignupActivity::class.java)
                 startActivity(intent)
                 finish()
             }
-
             override fun onAnimationRepeat(animation: Animation?) {}
         })
     }

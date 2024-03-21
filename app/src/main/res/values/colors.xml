@@ -11,4 +11,5 @@
     <color name="navy">#213555</color>
     <color name="darkYellow">#E5D283</color>
     <color name="grey">#A6A6A6</color>
+    <color name="clear">#00FFFFFF</color>
 </resources>
