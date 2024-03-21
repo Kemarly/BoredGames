@@ -56,7 +56,6 @@
             android:name=".SignupActivity"
             android:exported="true"
             android:theme="@style/Theme.BoredGames" >
-
         </activity>
     </application>
 
