@@ -190,7 +190,7 @@
         app:srcCompat="@drawable/img_8" />
 
     <ImageButton
-        android:id="@+id/imageView7"
+        android:id="@+id/HomeButton"
         android:layout_width="173dp"
         android:layout_height="135dp"
         android:layout_marginStart="496dp"
