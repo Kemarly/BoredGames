@@ -12,11 +12,12 @@ public class Sudoku extends AppCompatActivity {
 
     Button homebutton;
 
-    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku);
+
 
         homebutton = (Button) findViewById(R.id.HomeButton);
 
@@ -27,6 +28,7 @@ public class Sudoku extends AppCompatActivity {
             }
         });
     }
+
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
