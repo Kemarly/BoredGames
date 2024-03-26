@@ -92,8 +92,6 @@ public class Trivia extends AppCompatActivity {
 
     }
 
-
-
     private void makeApiCall() {
         TextView Ques = (TextView) findViewById(R.id.Question);
         Button Answer1 = (Button) findViewById(R.id.Answer1);
