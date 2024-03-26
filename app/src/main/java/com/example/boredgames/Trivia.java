@@ -20,16 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-
-
-
-
-
 public class Trivia extends AppCompatActivity {
-
-
-
-
 
     ImageButton homebutton;
 
@@ -44,7 +35,6 @@ public class Trivia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-
 
 
          makeApiCall();
@@ -87,8 +77,6 @@ public class Trivia extends AppCompatActivity {
 
 
         //private void makeApiCall() {
-
-
 
     }
 
