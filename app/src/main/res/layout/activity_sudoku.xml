@@ -4,34 +4,215 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sudokuback4"
     tools:context=".Sudoku">
 
+
+    <!--    <GridView-->
+    <!--        android:id="@+id/gridView1"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:numColumns="9"-->
+    <!--        tools:ignore="MissingConstraints" />-->
+
+    <TextView
+        android:id="@+id/box"
+        android:layout_width="800dp"
+        android:layout_height="800dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gridOne"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="1"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/box"
+        app:layout_constraintTop_toTopOf="@+id/box"
+        app:layout_constraintEnd_toStartOf="@+id/gridTwo"
+        app:layout_constraintBottom_toTopOf="@+id/gridFour"/>
+
+    <TextView
+        android:id="@+id/gridTwo"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="2"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/gridFive"
+        app:layout_constraintStart_toEndOf="@+id/gridOne"
+        app:layout_constraintTop_toTopOf="@+id/box"
+        app:layout_constraintEnd_toStartOf="@+id/gridThree"/>
+
+    <TextView
+        android:id="@+id/gridThree"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="3"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/box"
+        app:layout_constraintStart_toEndOf="@+id/gridTwo"
+        app:layout_constraintTop_toTopOf="@+id/box"
+        app:layout_constraintBottom_toTopOf="@+id/gridSix" />
+
+    <TextView
+        android:id="@+id/gridFour"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="4"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/gridOne"
+        app:layout_constraintEnd_toStartOf="@+id/gridFive"
+        app:layout_constraintBottom_toTopOf="@+id/gridSeven"
+        app:layout_constraintStart_toStartOf="@+id/box"
+        tools:layout_editor_absoluteY="297dp" />
+
+    <TextView
+        android:id="@+id/gridFive"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="5"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/gridTwo"
+        app:layout_constraintStart_toEndOf="@+id/gridFour"
+        app:layout_constraintEnd_toStartOf="@+id/gridSix"
+        app:layout_constraintBottom_toTopOf="@+id/gridEight"
+        tools:layout_editor_absoluteX="137dp" />
+
+    <TextView
+        android:id="@+id/gridSix"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:layout_marginEnd="1dp"
+        android:gravity="center"
+        android:text="6"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/gridNine"
+        app:layout_constraintEnd_toEndOf="@+id/box"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/gridFive"
+        app:layout_constraintTop_toBottomOf="@+id/gridThree"
+        app:layout_constraintVertical_bias="0.971" />
+
+    <TextView
+        android:id="@+id/gridSeven"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="7"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/box"
+        app:layout_constraintTop_toBottomOf="@+id/gridFour"
+        app:layout_constraintEnd_toStartOf="@id/gridEight"
+        app:layout_constraintBottom_toBottomOf="@+id/box"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/gridEight"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="8"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/gridFive"
+        app:layout_constraintEnd_toStartOf="@+id/gridNine"
+        app:layout_constraintBottom_toBottomOf="@+id/box"
+        app:layout_constraintStart_toEndOf="@+id/gridSeven" />
+
+    <TextView
+        android:id="@+id/gridNine"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:gravity="center"
+        android:text="9"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/gridSix"
+        app:layout_constraintBottom_toBottomOf="@+id/box"
+        app:layout_constraintEnd_toEndOf="@+id/box"
+        app:layout_constraintStart_toEndOf="@+id/gridEight" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="550dp"
         android:text="Sudoku"
         android:textColor="@color/purple_700"
         android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <ImageButton
+        android:id="@+id/TrophyIcon"
+        android:layout_width="171dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginEnd="485dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:srcCompat="@drawable/img_5" />
 
-
-    <Button
-        android:id="@+id/HomeButton"
-        android:layout_width="83dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginBottom="14dp"
-        android:background="#0AFFFFFF"
-        android:drawableStart="@drawable/baseline_home_24"
-        android:drawablePadding="8dp"
-        android:padding="15dp"
+    <ImageButton
+        android:id="@+id/imageView8"
+        android:layout_width="175dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="709dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_8" />
+
+    <ImageButton
+        android:id="@+id/imageView7"
+        android:layout_width="173dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="496dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_7" />
+
+    <ImageButton
+        android:id="@+id/imageView5"
+        android:layout_width="171dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="704dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
