@@ -8,11 +8,14 @@
 
     <ImageView
         android:id="@+id/splash1"
-        android:layout_width="1036dp"
-        android:layout_height="1339dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.512"
         app:srcCompat="@drawable/splash1"
-        tools:layout_editor_absoluteX="-147dp"
-        tools:ignore="MissingConstraints,VisualLintBounds" />
+        tools:ignore="MissingConstraints,VisualLintBounds"
+        tools:layout_editor_absoluteX="-342dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
