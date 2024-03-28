@@ -8,12 +8,18 @@
     tools:context=".Sudoku">
 
 
-    <!--    <GridView-->
-    <!--        android:id="@+id/gridView1"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:numColumns="9"-->
-    <!--        tools:ignore="MissingConstraints" />-->
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="9"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="274dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="241dp" />
 
     <TextView
         android:id="@+id/box"
@@ -214,5 +220,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_6" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="81dp"
+        android:layout_height="86dp"
+        android:src="@drawable/baseline_delete_24"
+        tools:layout_editor_absoluteX="301dp"
+        tools:layout_editor_absoluteY="143dp" />
+
+    <ImageButton
+        android:id="@+id/undo"
+        android:layout_width="76dp"
+        android:layout_height="79dp"
+        app:srcCompat="@drawable/baseline_undo_24"
+        tools:layout_editor_absoluteX="420dp"
+        tools:layout_editor_absoluteY="143dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
