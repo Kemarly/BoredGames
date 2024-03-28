@@ -49,7 +49,7 @@ class SplashScreen : AppCompatActivity() {
             override fun onAnimationEnd(animation: Animation?) {
                 val intent = Intent(this@SplashScreen, SignupActivity::class.java)
                 startActivity(intent)
-                finish()
+
             }
             override fun onAnimationRepeat(animation: Animation?) {}
         })
@@ -67,7 +67,7 @@ class SplashScreen : AppCompatActivity() {
             override fun onAnimationEnd(animation: Animation?) {
                 val intent = Intent(this@SplashScreen, SignupActivity::class.java)
                 startActivity(intent)
-                finish()
+
             }
             override fun onAnimationRepeat(animation: Animation?) {}
         })
@@ -85,7 +85,7 @@ class SplashScreen : AppCompatActivity() {
             override fun onAnimationEnd(animation: Animation?) {
                 val intent = Intent(this@SplashScreen, SignupActivity::class.java)
                 startActivity(intent)
-                finish()
+
             }
             override fun onAnimationRepeat(animation: Animation?) {}
         })
