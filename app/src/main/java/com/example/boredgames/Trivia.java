@@ -1,13 +1,14 @@
 package com.example.boredgames;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,18 +20,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
+import android.text.Html;
 
 
 
 
 public class Trivia extends AppCompatActivity {
 
+    Button AnswerBox1;
 
+    Button AnswerBox2;
 
+    Button AnswerBox3;
 
-
+    Button AnswerBox4;
     ImageButton homebutton;
 
     ImageButton SettingsButton;
@@ -87,14 +90,48 @@ public class Trivia extends AppCompatActivity {
 
 
         //private void makeApiCall() {
+        AnswerBox1 = (Button) findViewById(R.id.Answer1);
 
+        AnswerBox1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Answer1Choose();
+            }
+        });
 
+        AnswerBox2 = (Button) findViewById(R.id.Answer2);
+
+        AnswerBox2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Answer2Choose();
+            }
+        });
+
+        AnswerBox3 = (Button) findViewById(R.id.Answer3);
+        AnswerBox3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Answer3Choose();
+            }
+        });
+
+        AnswerBox4 = (Button) findViewById(R.id.Answer4);
+
+        AnswerBox4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Answer4Choose();
+            }
+        });
 
     }
 
     private void makeApiCall() {
         TextView Ques = (TextView) findViewById(R.id.Question);
         Button Answer1 = (Button) findViewById(R.id.Answer1);
+
+
         Button Answer2 = (Button) findViewById(R.id.Answer2);
         Button Answer3 = (Button) findViewById(R.id.Answer3);
         Button Answer4 = (Button) findViewById(R.id.Answer4);
@@ -134,23 +171,27 @@ public class Trivia extends AppCompatActivity {
                                 Ques.setText(question);
                                 if(question.contains("&quot;"))
                                 {
-                                 String newquestion = question.replace("&quot;", "");
+                                // String newquestion = question.replace("&quot;", "");
+                                    String newquestion = Html.fromHtml(question).toString();
                                  Ques.setText(newquestion);
                                 }
 
                                 if(question.contains("&#039;"))
                                 {
-                                    String newquestion = question.replace("&#039;", "");
+                                    //String newquestion = question.replace("&#039;", "");
+                                    String newquestion = Html.fromHtml(question).toString();
                                     Ques.setText(newquestion);
                                 }
 
                                 if(question.contains("&amp;"))
                                 {
-                                    String newquestion = question.replace("&amp;", "");
+                                    //String newquestion = question.replace("&amp;", "");
+                                    String newquestion = Html.fromHtml(question).toString();
                                     Ques.setText(newquestion);
                                 }
 
                                 Answer1.setText(correctAnswer);
+
 
 
                                 for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
@@ -159,43 +200,65 @@ public class Trivia extends AppCompatActivity {
                                         Answer2.setText(incorrectAnswer);
                                         if(incorrectAnswer.contains("&AMP;"))
                                         {
-                                            String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                            //String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
                                             Answer2.setText(incorrectAnswer);
                                         }
                                         if(incorrectAnswer.contains("#039;"))
                                         {
-                                            String newanswer = incorrectAnswer.replace("#039;", "");
+                                          //  String newanswer = incorrectAnswer.replace("#039;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                            Answer2.setText(incorrectAnswer);
+                                        }
+                                        if(incorrectAnswer.contains("&#039;"))
+                                        {
+                                           // String newanswer = incorrectAnswer.replace("&#039;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
                                             Answer2.setText(incorrectAnswer);
                                         }
                                     } else if (i == 1) {
                                         Answer3.setText(incorrectAnswer);
                                         if(incorrectAnswer.contains("&AMP;"))
                                         {
-                                            String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                            //String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
                                             Answer3.setText(incorrectAnswer);
                                         }
                                         if(incorrectAnswer.contains("#039;"))
                                         {
-                                            String newanswer = incorrectAnswer.replace("#039;", "");
+                                            //String newanswer = incorrectAnswer.replace("#039;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                            Answer3.setText(incorrectAnswer);
+                                        }
+                                        if(incorrectAnswer.contains("&#039;"))
+                                        {
+                                            //String newanswer = incorrectAnswer.replace("&#039;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
                                             Answer3.setText(incorrectAnswer);
                                         }
                                     } else if (i == 2) {
                                         Answer4.setText(incorrectAnswer);
                                         if(incorrectAnswer.contains("&AMP;"))
                                         {
-                                            String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                           // String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
                                             Answer4.setText(incorrectAnswer);
                                         }
                                         if(incorrectAnswer.contains("#039;"))
                                         {
-                                            String newanswer = incorrectAnswer.replace("#039;", "");
+                                            //String newanswer = incorrectAnswer.replace("#039;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                            Answer4.setText(incorrectAnswer);
+                                        }
+                                        if(incorrectAnswer.contains("&#039;"))
+                                        {
+                                            //String newanswer = incorrectAnswer.replace("&#039;", "");
+                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
                                             Answer4.setText(incorrectAnswer);
                                         }
                                     }
 
                                 }
-
-
 
                             }
 
@@ -248,5 +311,21 @@ public class Trivia extends AppCompatActivity {
     public void openProfile(){
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
+    }
+
+    public void Answer1Choose(){
+        AnswerBox1.setBackgroundColor(Color.GREEN);
+    }
+
+    public void Answer2Choose(){
+        AnswerBox2.setBackgroundColor(Color.RED);
+    }
+
+    public void Answer3Choose(){
+     AnswerBox3.setBackgroundColor(Color.RED);
+    }
+
+    public void Answer4Choose(){
+        AnswerBox4.setBackgroundColor(Color.RED);
     }
 }
