@@ -20,20 +20,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import android.text.Html;
+
+
+
 
 
 
 
 public class Trivia extends AppCompatActivity {
 
-    Button AnswerBox1;
+
+  
+   Button AnswerBox1;
 
     Button AnswerBox2;
 
     Button AnswerBox3;
 
     Button AnswerBox4;
+  
     ImageButton homebutton;
 
     ImageButton SettingsButton;
@@ -47,7 +54,6 @@ public class Trivia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-
 
 
          makeApiCall();
@@ -91,6 +97,7 @@ public class Trivia extends AppCompatActivity {
 
         //private void makeApiCall() {
         AnswerBox1 = (Button) findViewById(R.id.Answer1);
+
 
         AnswerBox1.setOnClickListener(new View.OnClickListener() {
             @Override

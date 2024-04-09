@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/script3"
     tools:context=".ScriptScavenger">
+
 
     <TextView
         android:id="@+id/textView2"
@@ -16,21 +18,61 @@
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.091" />
 
-
-    <Button
-        android:id="@+id/HomeButton"
-        android:layout_width="83dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginBottom="14dp"
-        android:background="#0AFFFFFF"
-        android:drawableStart="@drawable/baseline_home_24"
-        android:drawablePadding="8dp"
-        android:padding="15dp"
+    <ImageButton
+        android:id="@+id/TrophyIcon"
+        android:layout_width="171dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginEnd="485dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_5" />
+
+    <ImageButton
+        android:id="@+id/imageView8"
+        android:layout_width="175dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="709dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_8" />
+
+    <ImageButton
+        android:id="@+id/imageView7"
+        android:layout_width="173dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="496dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_7" />
+
+    <ImageButton
+        android:id="@+id/imageView5"
+        android:layout_width="171dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="704dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,20 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sudokuback4"
     tools:context=".Sudoku">
 
 
-    <!--    <GridView-->
-    <!--        android:id="@+id/gridView1"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:numColumns="9"-->
-    <!--        tools:ignore="MissingConstraints" />-->
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="9"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="274dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="241dp" />
 
     <TextView
         android:id="@+id/box"
-        android:layout_width="411dp"
-        android:layout_height="411dp"
+        android:layout_width="800dp"
+        android:layout_height="800dp"
         android:gravity="center"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,8 +34,8 @@
 
     <TextView
         android:id="@+id/gridOne"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="1"
         android:textSize="10sp"
@@ -40,8 +47,8 @@
 
     <TextView
         android:id="@+id/gridTwo"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="2"
         android:textSize="10sp"
@@ -53,8 +60,8 @@
 
     <TextView
         android:id="@+id/gridThree"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="3"
         android:textSize="10sp"
@@ -66,8 +73,8 @@
 
     <TextView
         android:id="@+id/gridFour"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="4"
         android:textSize="10sp"
@@ -80,8 +87,8 @@
 
     <TextView
         android:id="@+id/gridFive"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="5"
         android:textSize="10sp"
@@ -94,8 +101,8 @@
 
     <TextView
         android:id="@+id/gridSix"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:layout_marginEnd="1dp"
         android:gravity="center"
         android:text="6"
@@ -110,8 +117,8 @@
 
     <TextView
         android:id="@+id/gridSeven"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="7"
         android:textSize="10sp"
@@ -124,8 +131,8 @@
 
     <TextView
         android:id="@+id/gridEight"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="8"
         android:textSize="10sp"
@@ -137,8 +144,8 @@
 
     <TextView
         android:id="@+id/gridNine"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
+        android:layout_width="266dp"
+        android:layout_height="266dp"
         android:gravity="center"
         android:text="9"
         android:textSize="10sp"
@@ -162,15 +169,73 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.326" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/TrophyIcon"
+        android:layout_width="171dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginEnd="485dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_5" />
+
+    <ImageButton
+        android:id="@+id/imageView8"
+        android:layout_width="175dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="709dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_8" />
+
+    <ImageButton
         android:id="@+id/HomeButton"
-        android:layout_width="83dp"
-        android:layout_height="120dp"
-        android:background="#0AFFFFFF"
-        android:drawableStart="@drawable/baseline_home_24"
-        android:drawablePadding="8dp"
-        android:padding="15dp"
-        tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="629dp" />
+        android:layout_width="173dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="496dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_7" />
+
+    <ImageButton
+        android:id="@+id/imageView5"
+        android:layout_width="171dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="704dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_6" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="81dp"
+        android:layout_height="86dp"
+        android:src="@drawable/baseline_delete_24"
+        tools:layout_editor_absoluteX="301dp"
+        tools:layout_editor_absoluteY="143dp" />
+
+    <ImageButton
+        android:id="@+id/undo"
+        android:layout_width="76dp"
+        android:layout_height="79dp"
+        app:srcCompat="@drawable/baseline_undo_24"
+        tools:layout_editor_absoluteX="420dp"
+        tools:layout_editor_absoluteY="143dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
