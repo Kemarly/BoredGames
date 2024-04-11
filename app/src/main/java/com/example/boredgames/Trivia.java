@@ -24,15 +24,7 @@ import org.json.JSONObject;
 import android.text.Html;
 
 
-
-
-
-
-
 public class Trivia extends AppCompatActivity {
-
-
-  
    Button AnswerBox1;
 
     Button AnswerBox2;
@@ -49,12 +41,10 @@ public class Trivia extends AppCompatActivity {
 
     ImageButton ProfileButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-
 
          makeApiCall();
 
@@ -98,7 +88,6 @@ public class Trivia extends AppCompatActivity {
         //private void makeApiCall() {
         AnswerBox1 = (Button) findViewById(R.id.Answer1);
 
-
         AnswerBox1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,8 +126,6 @@ public class Trivia extends AppCompatActivity {
     private void makeApiCall() {
         TextView Ques = (TextView) findViewById(R.id.Question);
         Button Answer1 = (Button) findViewById(R.id.Answer1);
-
-
         Button Answer2 = (Button) findViewById(R.id.Answer2);
         Button Answer3 = (Button) findViewById(R.id.Answer3);
         Button Answer4 = (Button) findViewById(R.id.Answer4);
@@ -148,9 +135,6 @@ public class Trivia extends AppCompatActivity {
             JsonObjectRequest jsonObjectRequest_ = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-
-
-
                         try {
                             int result = response.getInt("response_code");
                             if (result == 5) {
@@ -159,10 +143,6 @@ public class Trivia extends AppCompatActivity {
                                 //makeApiCall();
                                 return;
                            }
-
-
-
-
                             if(result == 0) {
 
 
@@ -173,7 +153,6 @@ public class Trivia extends AppCompatActivity {
                                 String question = resultObject.getString("question");
 
                                 JSONArray incorrectAnswersArray = resultObject.getJSONArray("incorrect_answers");
-
 
                                 Ques.setText(question);
                                 if(question.contains("&quot;"))
@@ -198,9 +177,6 @@ public class Trivia extends AppCompatActivity {
                                 }
 
                                 Answer1.setText(correctAnswer);
-
-
-
                                 for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
                                     String incorrectAnswer = incorrectAnswersArray.getString(i);
                                     if (i == 0) {
@@ -268,16 +244,13 @@ public class Trivia extends AppCompatActivity {
                                 }
 
                             }
-
-
-
-                        } catch (JSONException e) {
+                        }
+                        catch (JSONException e) {
                             //   throw new RuntimeException(e);
                             e.printStackTrace();
                             Ques.setText("Error parsing JSON");
                         }
                     }
-
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
@@ -286,20 +259,12 @@ public class Trivia extends AppCompatActivity {
 
                     makeApiCall();
                 }
-
             });
-
-
-
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(jsonObjectRequest_);
         }
 
-
-
-    public void OnResponse(){
-
-}
+    public void OnResponse(){ }
     public void goHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

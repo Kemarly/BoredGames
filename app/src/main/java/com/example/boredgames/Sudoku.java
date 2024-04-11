@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.os.CountDownTimer;
 
-
 public class Sudoku extends AppCompatActivity {
 
     ImageButton homebutton;
