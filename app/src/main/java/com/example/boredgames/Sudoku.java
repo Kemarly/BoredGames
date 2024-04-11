@@ -30,7 +30,6 @@ public class Sudoku extends AppCompatActivity {
         });
     }
 
-
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
