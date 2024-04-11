@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class ScriptScavenger extends AppCompatActivity {
 
-    Button homebutton;
+    ImageButton homebutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +18,9 @@ public class ScriptScavenger extends AppCompatActivity {
         setContentView(R.layout.activity_script_scavenger);
 
 
-        homebutton = (Button) findViewById(R.id.HomeButton);
+
+        homebutton = (ImageButton) findViewById(R.id.imageView7);
+
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +29,6 @@ public class ScriptScavenger extends AppCompatActivity {
             }
         });
     }
-
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);

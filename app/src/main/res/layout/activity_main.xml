@@ -8,7 +8,6 @@
     android:background="@drawable/img_2"
     tools:context=".MainActivity">
 
-
     <ImageButton
         android:id="@+id/imageView5"
         android:layout_width="171dp"
@@ -133,6 +132,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_9" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
