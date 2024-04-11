@@ -27,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         triviaButton = (ImageButton) findViewById(R.id.imageButton);
-        triviaButton.setTooltipText("Trivia");
+        //triviaButton.setTooltipText("Trivia");
         triviaButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openTrivia(); showSnackbar("Trivia");}
+            public void onClick(View v) {
+                openTrivia();
+                showSnackbar("Trivia");
+            }
         });
 
         scriptscavButton = (ImageButton) findViewById(R.id.imageView2);
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openScriptScav();
+                showSnackbar("Script Scavenger");
             }
         });
 
@@ -46,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         HangmanButton.setTooltipText("Hangman");
         HangmanButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openHangman();showSnackbar("Hangman");}
+            public void onClick(View v) {
+                openHangman();showSnackbar("Hangman");}
         });
 
         SudokuButton = (ImageButton) findViewById(R.id.imageView4);
@@ -60,14 +65,16 @@ public class MainActivity extends AppCompatActivity {
         SettingsButton.setTooltipText("Settings");
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openSettings();showSnackbar("Settings");}
+            public void onClick(View v) {
+                openSettings();showSnackbar("Settings");}
         });
 
         AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
         AchievementButton.setTooltipText("Achievements");
         AchievementButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openAchievements();showSnackbar("Achievements");}
+            public void onClick(View v) {
+                openAchievements();showSnackbar("Achievements");}
         });
 
         HomeButton=(ImageButton)findViewById(R.id.imageView7);
