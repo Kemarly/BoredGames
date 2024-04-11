@@ -24,15 +24,7 @@ import org.json.JSONObject;
 import android.text.Html;
 
 
-
-
-
-
-
 public class Trivia extends AppCompatActivity {
-
-
-  
    Button AnswerBox1;
 
     Button AnswerBox2;
@@ -41,7 +33,7 @@ public class Trivia extends AppCompatActivity {
 
     Button AnswerBox4;
   
-    ImageButton homebutton;
+    ImageButton HomeButton;
 
     ImageButton SettingsButton;
 
@@ -49,96 +41,51 @@ public class Trivia extends AppCompatActivity {
 
     ImageButton ProfileButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
 
-
          makeApiCall();
 
-        homebutton = (ImageButton) findViewById(R.id.imageView7);
+        HomeButton = (ImageButton) findViewById(R.id.imageView7);
 
-        homebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goHome();
-            }
-        });
+        HomeButton.setOnClickListener(v -> goHome());
 
         SettingsButton = (ImageButton) findViewById(R.id.imageView5);
 
-        SettingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSettings();
-            }
-        });
+        SettingsButton.setOnClickListener(v -> openSettings());
 
         AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
 
-        AchievementButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAchievements();
-            }
-        });
+        AchievementButton.setOnClickListener(v -> openAchievements());
 
         ProfileButton = (ImageButton) findViewById(R.id.imageView8);
 
-        ProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openProfile();
-            }
-        });
+        ProfileButton.setOnClickListener(v -> openProfile());
 
 
         //private void makeApiCall() {
         AnswerBox1 = (Button) findViewById(R.id.Answer1);
 
-
-        AnswerBox1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer1Choose();
-            }
-        });
+        AnswerBox1.setOnClickListener(v -> Answer1Choose());
 
         AnswerBox2 = (Button) findViewById(R.id.Answer2);
 
-        AnswerBox2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer2Choose();
-            }
-        });
+        AnswerBox2.setOnClickListener(v -> Answer2Choose());
 
         AnswerBox3 = (Button) findViewById(R.id.Answer3);
-        AnswerBox3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer3Choose();
-            }
-        });
+        AnswerBox3.setOnClickListener(v -> Answer3Choose());
 
         AnswerBox4 = (Button) findViewById(R.id.Answer4);
 
-        AnswerBox4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer4Choose();
-            }
-        });
+        AnswerBox4.setOnClickListener(v -> Answer4Choose());
 
     }
 
     private void makeApiCall() {
         TextView Ques = (TextView) findViewById(R.id.Question);
         Button Answer1 = (Button) findViewById(R.id.Answer1);
-
-
         Button Answer2 = (Button) findViewById(R.id.Answer2);
         Button Answer3 = (Button) findViewById(R.id.Answer3);
         Button Answer4 = (Button) findViewById(R.id.Answer4);
@@ -148,9 +95,6 @@ public class Trivia extends AppCompatActivity {
             JsonObjectRequest jsonObjectRequest_ = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-
-
-
                         try {
                             int result = response.getInt("response_code");
                             if (result == 5) {
@@ -159,10 +103,6 @@ public class Trivia extends AppCompatActivity {
                                 //makeApiCall();
                                 return;
                            }
-
-
-
-
                             if(result == 0) {
 
 
@@ -173,7 +113,6 @@ public class Trivia extends AppCompatActivity {
                                 String question = resultObject.getString("question");
 
                                 JSONArray incorrectAnswersArray = resultObject.getJSONArray("incorrect_answers");
-
 
                                 Ques.setText(question);
                                 if(question.contains("&quot;"))
@@ -198,9 +137,6 @@ public class Trivia extends AppCompatActivity {
                                 }
 
                                 Answer1.setText(correctAnswer);
-
-
-
                                 for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
                                     String incorrectAnswer = incorrectAnswersArray.getString(i);
                                     if (i == 0) {
@@ -268,16 +204,13 @@ public class Trivia extends AppCompatActivity {
                                 }
 
                             }
-
-
-
-                        } catch (JSONException e) {
+                        }
+                        catch (JSONException e) {
                             //   throw new RuntimeException(e);
                             e.printStackTrace();
                             Ques.setText("Error parsing JSON");
                         }
                     }
-
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
@@ -286,20 +219,12 @@ public class Trivia extends AppCompatActivity {
 
                     makeApiCall();
                 }
-
             });
-
-
-
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(jsonObjectRequest_);
         }
 
-
-
-    public void OnResponse(){
-
-}
+    public void OnResponse(){ }
     public void goHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
