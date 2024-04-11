@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="CustomSnackbarText" parent="TextAppearance.Design.Snackbar.Message">
-        <item name="android:textSize">300px</item>
+        <item name="android:textSize">30px</item>
     </style>
-
 </resources>

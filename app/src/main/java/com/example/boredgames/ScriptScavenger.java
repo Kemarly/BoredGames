@@ -16,7 +16,6 @@ public class ScriptScavenger extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_script_scavenger);
 
-
         homebutton = (Button) findViewById(R.id.HomeButton);
 
         homebutton.setOnClickListener(new View.OnClickListener() {
@@ -26,7 +25,6 @@ public class ScriptScavenger extends AppCompatActivity {
             }
         });
     }
-
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
