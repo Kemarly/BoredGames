@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         triviaButton = (ImageButton) findViewById(R.id.imageButton);
-        triviaButton.setTooltipText("Trivia");
+        //triviaButton.setTooltipText("Trivia");
         triviaButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {openTrivia(); }
         });
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openScriptScav();
+                showSnackbar("Script Scavenger");
             }
         });
 
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         HangmanButton.setTooltipText("Hangman");
         HangmanButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {openHangman();}
         });
 
@@ -58,14 +61,18 @@ public class MainActivity extends AppCompatActivity {
         SettingsButton.setTooltipText("Settings");
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {openSettings();}
+
         });
 
         AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
         AchievementButton.setTooltipText("Achievements");
         AchievementButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {openAchievements();}
+
         });
 
         HomeButton=(ImageButton)findViewById(R.id.imageView7);
