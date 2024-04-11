@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "294876773006",
+    "project_id": "boredgames-6c83f",
+    "storage_bucket": "boredgames-6c83f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294876773006:android:813fbc0dfed72e7c4ce7df",
+        "android_client_info": {
+          "package_name": "com.example.boredgames"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4hXB6k9eKXEYPFEqiLvvqnxST2TESIPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
