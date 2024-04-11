@@ -18,7 +18,9 @@ public class ScriptScavenger extends AppCompatActivity {
         setContentView(R.layout.activity_script_scavenger);
 
 
+
         homebutton = (ImageButton) findViewById(R.id.imageView7);
+
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,7 +29,6 @@ public class ScriptScavenger extends AppCompatActivity {
             }
         });
     }
-
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
