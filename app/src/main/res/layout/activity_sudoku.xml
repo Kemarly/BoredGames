@@ -22,6 +22,18 @@
         tools:layout_editor_absoluteY="241dp" />
 
     <TextView
+        android:id="@+id/Time"
+        android:layout_width="366dp"
+        android:layout_height="161dp"
+        android:text="60"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="96sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="326dp"
+        tools:layout_editor_absoluteY="1362dp" />
+
+    <TextView
         android:id="@+id/box"
         android:layout_width="800dp"
         android:layout_height="800dp"
@@ -29,8 +41,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/gridOne"
@@ -40,10 +54,10 @@
         android:text="1"
         android:textSize="10sp"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/box"
-        app:layout_constraintTop_toTopOf="@+id/box"
+        app:layout_constraintBottom_toTopOf="@+id/gridFour"
         app:layout_constraintEnd_toStartOf="@+id/gridTwo"
-        app:layout_constraintBottom_toTopOf="@+id/gridFour"/>
+        app:layout_constraintStart_toStartOf="@+id/box"
+        app:layout_constraintTop_toTopOf="@+id/box" />
 
     <TextView
         android:id="@+id/gridTwo"
@@ -54,9 +68,9 @@
         android:textSize="10sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/gridFive"
+        app:layout_constraintEnd_toStartOf="@+id/gridThree"
         app:layout_constraintStart_toEndOf="@+id/gridOne"
-        app:layout_constraintTop_toTopOf="@+id/box"
-        app:layout_constraintEnd_toStartOf="@+id/gridThree"/>
+        app:layout_constraintTop_toTopOf="@+id/box" />
 
     <TextView
         android:id="@+id/gridThree"
@@ -66,10 +80,10 @@
         android:text="3"
         android:textSize="10sp"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/gridSix"
         app:layout_constraintEnd_toEndOf="@+id/box"
         app:layout_constraintStart_toEndOf="@+id/gridTwo"
-        app:layout_constraintTop_toTopOf="@+id/box"
-        app:layout_constraintBottom_toTopOf="@+id/gridSix" />
+        app:layout_constraintTop_toTopOf="@+id/box" />
 
     <TextView
         android:id="@+id/gridFour"
@@ -79,10 +93,10 @@
         android:text="4"
         android:textSize="10sp"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/gridOne"
-        app:layout_constraintEnd_toStartOf="@+id/gridFive"
         app:layout_constraintBottom_toTopOf="@+id/gridSeven"
+        app:layout_constraintEnd_toStartOf="@+id/gridFive"
         app:layout_constraintStart_toStartOf="@+id/box"
+        app:layout_constraintTop_toBottomOf="@+id/gridOne"
         tools:layout_editor_absoluteY="297dp" />
 
     <TextView
@@ -93,11 +107,10 @@
         android:text="5"
         android:textSize="10sp"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/gridTwo"
-        app:layout_constraintStart_toEndOf="@+id/gridFour"
-        app:layout_constraintEnd_toStartOf="@+id/gridSix"
         app:layout_constraintBottom_toTopOf="@+id/gridEight"
-        tools:layout_editor_absoluteX="137dp" />
+        app:layout_constraintEnd_toStartOf="@+id/gridSix"
+        app:layout_constraintStart_toEndOf="@+id/gridFour"
+        app:layout_constraintTop_toBottomOf="@+id/gridTwo" />
 
     <TextView
         android:id="@+id/gridSix"
@@ -123,10 +136,10 @@
         android:text="7"
         android:textSize="10sp"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/box"
+        app:layout_constraintEnd_toStartOf="@id/gridEight"
         app:layout_constraintStart_toStartOf="@+id/box"
         app:layout_constraintTop_toBottomOf="@+id/gridFour"
-        app:layout_constraintEnd_toStartOf="@id/gridEight"
-        app:layout_constraintBottom_toBottomOf="@+id/box"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
@@ -137,10 +150,10 @@
         android:text="8"
         android:textSize="10sp"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@id/gridFive"
-        app:layout_constraintEnd_toStartOf="@+id/gridNine"
         app:layout_constraintBottom_toBottomOf="@+id/box"
-        app:layout_constraintStart_toEndOf="@+id/gridSeven" />
+        app:layout_constraintEnd_toStartOf="@+id/gridNine"
+        app:layout_constraintStart_toEndOf="@+id/gridSeven"
+        app:layout_constraintTop_toBottomOf="@id/gridFive" />
 
     <TextView
         android:id="@+id/gridNine"
@@ -150,10 +163,10 @@
         android:text="9"
         android:textSize="10sp"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/gridSix"
         app:layout_constraintBottom_toBottomOf="@+id/box"
         app:layout_constraintEnd_toEndOf="@+id/box"
-        app:layout_constraintStart_toEndOf="@+id/gridEight" />
+        app:layout_constraintStart_toEndOf="@+id/gridEight"
+        app:layout_constraintTop_toBottomOf="@+id/gridSix" />
 
     <TextView
         android:id="@+id/textView2"
@@ -225,17 +238,25 @@
         android:id="@+id/delete"
         android:layout_width="81dp"
         android:layout_height="86dp"
+        android:layout_marginStart="268dp"
         android:src="@drawable/baseline_delete_24"
-        tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="143dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095" />
 
     <ImageButton
         android:id="@+id/undo"
-        android:layout_width="76dp"
-        android:layout_height="79dp"
-        app:srcCompat="@drawable/baseline_undo_24"
-        tools:layout_editor_absoluteX="420dp"
-        tools:layout_editor_absoluteY="143dp" />
+        android:layout_width="83dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintStart_toEndOf="@+id/delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.094"
+        app:srcCompat="@drawable/baseline_undo_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
