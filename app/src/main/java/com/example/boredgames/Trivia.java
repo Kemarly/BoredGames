@@ -33,7 +33,7 @@ public class Trivia extends AppCompatActivity {
 
     Button AnswerBox4;
   
-    ImageButton homebutton;
+    ImageButton HomeButton;
 
     ImageButton SettingsButton;
 
@@ -48,78 +48,38 @@ public class Trivia extends AppCompatActivity {
 
          makeApiCall();
 
-        homebutton = (ImageButton) findViewById(R.id.imageView7);
+        HomeButton = (ImageButton) findViewById(R.id.imageView7);
 
-        homebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goHome();
-            }
-        });
+        HomeButton.setOnClickListener(v -> goHome());
 
         SettingsButton = (ImageButton) findViewById(R.id.imageView5);
 
-        SettingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSettings();
-            }
-        });
+        SettingsButton.setOnClickListener(v -> openSettings());
 
         AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
 
-        AchievementButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAchievements();
-            }
-        });
+        AchievementButton.setOnClickListener(v -> openAchievements());
 
         ProfileButton = (ImageButton) findViewById(R.id.imageView8);
 
-        ProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openProfile();
-            }
-        });
+        ProfileButton.setOnClickListener(v -> openProfile());
 
 
         //private void makeApiCall() {
         AnswerBox1 = (Button) findViewById(R.id.Answer1);
 
-        AnswerBox1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer1Choose();
-            }
-        });
+        AnswerBox1.setOnClickListener(v -> Answer1Choose());
 
         AnswerBox2 = (Button) findViewById(R.id.Answer2);
 
-        AnswerBox2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer2Choose();
-            }
-        });
+        AnswerBox2.setOnClickListener(v -> Answer2Choose());
 
         AnswerBox3 = (Button) findViewById(R.id.Answer3);
-        AnswerBox3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer3Choose();
-            }
-        });
+        AnswerBox3.setOnClickListener(v -> Answer3Choose());
 
         AnswerBox4 = (Button) findViewById(R.id.Answer4);
 
-        AnswerBox4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Answer4Choose();
-            }
-        });
+        AnswerBox4.setOnClickListener(v -> Answer4Choose());
 
     }
 

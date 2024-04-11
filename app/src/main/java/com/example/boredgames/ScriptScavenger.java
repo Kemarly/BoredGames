@@ -41,13 +41,14 @@ public class ScriptScavenger extends AppCompatActivity {
     }
     private void resetTimer()
     {
-        timer = new CountDownTimer(60000, 6000) {
+        timer = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {}
 
             @Override
-            public void onFinish() { }
+            public void onFinish() {showScore();}
 
         };
     }
+    private void showScore(){}
 }
