@@ -7,7 +7,6 @@
     android:background="@drawable/script3"
     tools:context=".ScriptScavenger">
 
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -76,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_6" />
 
-    <TextView
+    <EditText
         android:id="@+id/Time"
         android:layout_width="366dp"
         android:layout_height="161dp"
@@ -85,7 +84,11 @@
         android:textColor="@color/black"
         android:textSize="96sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="1362dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.772" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
