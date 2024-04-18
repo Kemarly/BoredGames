@@ -7,7 +7,6 @@
     android:background="@drawable/script3"
     tools:context=".ScriptScavenger">
 
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -76,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_6" />
 
-    <TextView
+    <EditText
         android:id="@+id/Time"
         android:layout_width="366dp"
         android:layout_height="161dp"
@@ -85,7 +84,39 @@
         android:textColor="@color/black"
         android:textSize="96sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="1362dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.671" />
+
+    <EditText
+        android:id="@+id/userInput"
+        android:layout_width="491dp"
+        android:layout_height="60dp"
+        android:hint="type an answer"
+        android:inputType="text"
+        android:textSize="20dp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <EditText
+        android:id="@+id/generateWord"
+        android:layout_width="497dp"
+        android:layout_height="120dp"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/userInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
