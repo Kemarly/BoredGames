@@ -1,7 +1,6 @@
 package com.example.boredgames;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.os.CountDownTimer;
 import android.widget.TextView;
-
 import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
@@ -55,13 +53,11 @@ public class ScriptScavenger extends AppCompatActivity {
                     }
                     currentAnswers += inputText;
                     answers.setText(currentAnswers);
-                    userInput.setText(""); // Clear userInput after adding to answers
+                    userInput.setText("");
                 }
             }
         });
     }
-
-
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -81,7 +77,9 @@ public class ScriptScavenger extends AppCompatActivity {
             }
         }.start();
     }
-    private void showScore(){}
+    private void showScore(){
+        score = 0;
+    }
     private String genRandom() {
         String[] words = {"onomatopoeia", "miscellaneous", "serendipity", "ostentatious", "infinitesimal"};
         Random rand = new Random();
