@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.os.CountDownTimer;
@@ -20,6 +21,7 @@ public class ScriptScavenger extends AppCompatActivity {
     EditText userInput;
     TextView generateWord;
     TextView tickTime;
+    TextView answers;
     int score;
 
     @Override
@@ -31,29 +33,34 @@ public class ScriptScavenger extends AppCompatActivity {
         resetTimer();
         timer.start();
 
-        HomeButton = (ImageButton) findViewById(R.id.imageView7);
+        HomeButton = findViewById(R.id.imageView7);
         HomeButton.setOnClickListener(v -> GoHome());
 
-        if(timer != null) {timer.cancel();}
-        assert timer != null;
-        timer.start();
-
-        generateWord=findViewById(R.id.generateWord);
+        generateWord = findViewById(R.id.generateWord);
         String randomWord = genRandom();
         generateWord.setText(randomWord);
 
+        answers = findViewById(R.id.answers);
         userInput = findViewById(R.id.userInput);
-        //String uInput = userInput.getText().toString();
-        userInput.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                String uInput = userInput.getText().toString();
-                generateWord.append("\n"+ uInput);
-                userInput.setText("");
-                return true;
+
+        Button enterButton = findViewById(R.id.enter);
+        enterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputText = userInput.getText().toString();
+                if (!inputText.isEmpty()) {
+                    String currentAnswers = answers.getText().toString();
+                    if (!currentAnswers.isEmpty()) {
+                        currentAnswers += "\n";
+                    }
+                    currentAnswers += inputText;
+                    answers.setText(currentAnswers);
+                    userInput.setText(""); // Clear userInput after adding to answers
+                }
             }
-            return false;
         });
     }
+
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
