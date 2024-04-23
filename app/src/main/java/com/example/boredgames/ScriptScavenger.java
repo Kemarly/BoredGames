@@ -9,6 +9,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.os.CountDownTimer;
+import android.widget.TextView;
+
 import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
@@ -16,8 +18,9 @@ public class ScriptScavenger extends AppCompatActivity {
     ImageButton HomeButton;
     CountDownTimer timer;
     EditText userInput;
-    EditText generateWord;
-    EditText tickTime;
+    TextView generateWord;
+    TextView tickTime;
+    int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,4 +81,6 @@ public class ScriptScavenger extends AppCompatActivity {
         int index = rand.nextInt(words.length);
         return words[index];
     }
+    private void tutorial(){}
+    private void popUp(){}
 }

@@ -14,8 +14,9 @@
         android:layout_marginBottom="550dp"
         android:text="Script Scavenger!"
         android:textAlignment="center"
-        android:textColor="@color/purple_700"
-        android:textSize="50sp"
+        android:textAllCaps="true"
+        android:textColor="@color/darkYellow"
+        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
@@ -75,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_6" />
 
-    <EditText
+    <TextView
         android:id="@+id/Time"
         android:layout_width="366dp"
         android:layout_height="161dp"
@@ -97,8 +98,9 @@
         android:layout_height="60dp"
         android:hint="type an answer"
         android:inputType="text"
-        android:textSize="20dp"
         android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
@@ -106,13 +108,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307" />
 
-    <EditText
+    <TextView
         android:id="@+id/generateWord"
         android:layout_width="497dp"
         android:layout_height="120dp"
         android:inputType="text"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/userInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
