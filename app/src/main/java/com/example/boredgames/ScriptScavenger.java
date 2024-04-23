@@ -1,14 +1,15 @@
 package com.example.boredgames;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.os.CountDownTimer;
+import android.widget.TextView;
 import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
@@ -16,8 +17,10 @@ public class ScriptScavenger extends AppCompatActivity {
     ImageButton HomeButton;
     CountDownTimer timer;
     EditText userInput;
-    EditText generateWord;
-    EditText tickTime;
+    TextView generateWord;
+    TextView tickTime;
+    TextView answers;
+    int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,30 +31,33 @@ public class ScriptScavenger extends AppCompatActivity {
         resetTimer();
         timer.start();
 
-        HomeButton = (ImageButton) findViewById(R.id.imageView7);
+        HomeButton = findViewById(R.id.imageView7);
         HomeButton.setOnClickListener(v -> GoHome());
 
-        if(timer != null) {timer.cancel();}
-        assert timer != null;
-        timer.start();
-
-        generateWord=findViewById(R.id.generateWord);
+        generateWord = findViewById(R.id.generateWord);
         String randomWord = genRandom();
         generateWord.setText(randomWord);
 
+        answers = findViewById(R.id.answers);
         userInput = findViewById(R.id.userInput);
-        //String uInput = userInput.getText().toString();
-        userInput.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                String uInput = userInput.getText().toString();
-                generateWord.append("\n"+ uInput);
-                userInput.setText("");
-                return true;
+
+        Button enterButton = findViewById(R.id.enter);
+        enterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputText = userInput.getText().toString();
+                if (!inputText.isEmpty()) {
+                    String currentAnswers = answers.getText().toString();
+                    if (!currentAnswers.isEmpty()) {
+                        currentAnswers += "\n";
+                    }
+                    currentAnswers += inputText;
+                    answers.setText(currentAnswers);
+                    userInput.setText("");
+                }
             }
-            return false;
         });
     }
-
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -71,11 +77,15 @@ public class ScriptScavenger extends AppCompatActivity {
             }
         }.start();
     }
-    private void showScore(){}
+    private void showScore(){
+        score = 0;
+    }
     private String genRandom() {
         String[] words = {"onomatopoeia", "miscellaneous", "serendipity", "ostentatious", "infinitesimal"};
         Random rand = new Random();
         int index = rand.nextInt(words.length);
         return words[index];
     }
+    private void tutorial(){}
+    private void popUp(){}
 }
