@@ -1,17 +1,17 @@
 package com.example.boredgames;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.os.CountDownTimer;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Sudoku extends AppCompatActivity {
 
-    ImageButton homebutton;
+    ImageButton HomeButton;
+    CountDownTimer timer;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -19,20 +19,26 @@ public class Sudoku extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku);
 
+        HomeButton = (ImageButton) findViewById(R.id.HomeButton);
 
-        homebutton = (ImageButton) findViewById(R.id.HomeButton);
-
-        homebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GoHome();
-            }
-        });
+        HomeButton.setOnClickListener(v -> GoHome());
+        resetTimer();
     }
-
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+    private void resetTimer()
+    {
+        timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
+            long elapsedTime = 0;
+            @Override
+            public void onTick(long millisUntilFinished) {elapsedTime += 1000;}
+
+            @Override
+            public void onFinish() { }
+
+        };
     }
 }
