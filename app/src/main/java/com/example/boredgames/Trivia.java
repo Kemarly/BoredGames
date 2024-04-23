@@ -51,23 +51,23 @@ import java.sql.Time;
 
 public class Trivia extends AppCompatActivity {
 
-   private int QuestionTracker = 0;
 
-   private int ScoreTracker = 0;
 
-   TextView QuestionBox;
+    private int QuestionTracker = 0;
 
-public class Trivia extends AppCompatActivity {
+    private int ScoreTracker = 0;
 
-   Button AnswerBox1;
+    TextView QuestionBox;
+
+    Button AnswerBox1;
 
     Button AnswerBox2;
 
     Button AnswerBox3;
 
     Button AnswerBox4;
-  
-    ImageButton HomeButton;
+
+    ImageButton homebutton;
 
     ImageButton SettingsButton;
 
@@ -76,38 +76,59 @@ public class Trivia extends AppCompatActivity {
     ImageButton ProfileButton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
 
 
+
         ScoreTracker = 0;
 
         QuestionTracker = 0;
 
-         makeApiCall();
+        makeApiCall();
 
-        HomeButton = (ImageButton) findViewById(R.id.imageView7);
+        homebutton = (ImageButton) findViewById(R.id.imageView7);
 
-        HomeButton.setOnClickListener(v -> goHome());
+        homebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goHome();
+            }
+        });
 
         SettingsButton = (ImageButton) findViewById(R.id.imageView5);
 
-        SettingsButton.setOnClickListener(v -> openSettings());
+        SettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettings();
+            }
+        });
 
         AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
 
-        AchievementButton.setOnClickListener(v -> openAchievements());
+        AchievementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAchievements();
+            }
+        });
 
         ProfileButton = (ImageButton) findViewById(R.id.imageView8);
 
-        ProfileButton.setOnClickListener(v -> openProfile());
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProfile();
+            }
+        });
 
 
         //private void makeApiCall() {
         AnswerBox1 = (Button) findViewById(R.id.Answer1);
-
 
         QuestionBox = (TextView) findViewById(R.id.Question);
 
@@ -150,20 +171,6 @@ public class Trivia extends AppCompatActivity {
             }
         });
 
-        AnswerBox1.setOnClickListener(v -> Answer1Choose());
-
-        AnswerBox2 = (Button) findViewById(R.id.Answer2);
-
-        AnswerBox2.setOnClickListener(v -> Answer2Choose());
-
-        AnswerBox3 = (Button) findViewById(R.id.Answer3);
-        AnswerBox3.setOnClickListener(v -> Answer3Choose());
-
-        AnswerBox4 = (Button) findViewById(R.id.Answer4);
-
-        AnswerBox4.setOnClickListener(v -> Answer4Choose());
-
-
     }
 
     private void makeApiCall() {
@@ -173,16 +180,14 @@ public class Trivia extends AppCompatActivity {
         TextView Ques = (TextView) findViewById(R.id.Question);
         Button Answer1 = (Button) findViewById(R.id.Answer1);
 
+        //  AnswerBox1.setOnClickListener(new View.OnClickListener() {
+        //      @Override
+        //      public void onClick(View v) {
+        //          Answer1Choose();
+        //          AnswerChoose(AnswerBox1);
 
-      //  AnswerBox1.setOnClickListener(new View.OnClickListener() {
-      //      @Override
-      //      public void onClick(View v) {
-      //          Answer1Choose();
-      //          AnswerChoose(AnswerBox1);
-
-      //      }
-      //  });
-
+        //      }
+        //  });
 
 
 
@@ -199,152 +204,156 @@ public class Trivia extends AppCompatActivity {
 
         //Answer1.setBackgroundColor(0xd3d3d3);
 
-            String url = "https://opentdb.com/api.php?amount=1&type=multiple";
+        String url = "https://opentdb.com/api.php?amount=1&type=multiple";
 
-            JsonObjectRequest jsonObjectRequest_ = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                        try {
-                            int result = response.getInt("response_code");
-                            if (result == 5) {
-                                //makeApiCall();
-                                //onResponse(response);
-                                //makeApiCall();
-                                return;
-
-                            }
-
-
-                            if (result == 0) {
-
-                           }
-                            if(result == 0) {
+        JsonObjectRequest jsonObjectRequest_ = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
 
 
 
-                                JSONArray resultsArray = response.getJSONArray("results");
-
-                                JSONObject resultObject = resultsArray.getJSONObject(0);
-                                String correctAnswer = resultObject.getString("correct_answer");
-                                String question = resultObject.getString("question");
-
-                                JSONArray incorrectAnswersArray = resultObject.getJSONArray("incorrect_answers");
-
-                                Ques.setText(question);
-                                if (question.contains("&quot;")) {
-                                    // String newquestion = question.replace("&quot;", "");
-                                    String newquestion = Html.fromHtml(question).toString();
-                                    Ques.setText(newquestion);
-
-                                }
-
-                                if (question.contains("&#039;")) {
-                                    //String newquestion = question.replace("&#039;", "");
-                                    String newquestion = Html.fromHtml(question).toString();
-                                    Ques.setText(newquestion);
-                                }
-
-                                if (question.contains("&amp;")) {
-                                    //String newquestion = question.replace("&amp;", "");
-                                    String newquestion = Html.fromHtml(question).toString();
-                                    Ques.setText(newquestion);
-                                }
-
-                                Answer1.setText(correctAnswer);
-
-                                for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
-                                    String incorrectAnswer = incorrectAnswersArray.getString(i);
-                                    if (i == 0) {
-                                        Answer2.setText(incorrectAnswer);
-                                        if (incorrectAnswer.contains("&AMP;")) {
-                                            //String newanswer = incorrectAnswer.replace("&AMP;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer2.setText(incorrectAnswer);
-                                        }
-                                        if (incorrectAnswer.contains("#039;")) {
-                                            //  String newanswer = incorrectAnswer.replace("#039;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer2.setText(incorrectAnswer);
-                                        }
-                                        if (incorrectAnswer.contains("&#039;")) {
-                                            // String newanswer = incorrectAnswer.replace("&#039;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer2.setText(incorrectAnswer);
-                                        }
-                                    } else if (i == 1) {
-                                        Answer3.setText(incorrectAnswer);
-                                        if (incorrectAnswer.contains("&AMP;")) {
-                                            //String newanswer = incorrectAnswer.replace("&AMP;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer3.setText(incorrectAnswer);
-                                        }
-                                        if (incorrectAnswer.contains("#039;")) {
-                                            //String newanswer = incorrectAnswer.replace("#039;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer3.setText(incorrectAnswer);
-                                        }
-                                        if (incorrectAnswer.contains("&#039;")) {
-                                            //String newanswer = incorrectAnswer.replace("&#039;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer3.setText(incorrectAnswer);
-                                        }
-                                    } else if (i == 2) {
-                                        Answer4.setText(incorrectAnswer);
-                                        if (incorrectAnswer.contains("&AMP;")) {
-                                            // String newanswer = incorrectAnswer.replace("&AMP;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer4.setText(incorrectAnswer);
-                                        }
-                                        if (incorrectAnswer.contains("#039;")) {
-                                            //String newanswer = incorrectAnswer.replace("#039;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer4.setText(incorrectAnswer);
-                                        }
-                                        if (incorrectAnswer.contains("&#039;")) {
-                                            //String newanswer = incorrectAnswer.replace("&#039;", "");
-                                            String newanswer = Html.fromHtml(incorrectAnswer).toString();
-                                            Answer4.setText(incorrectAnswer);
-                                        }
-                                    }
-
-                                }
-
-                            }
-
-
-
-                        } catch (JSONException e) {
-
-                        }
-                        catch (JSONException e) {
-
-                            //   throw new RuntimeException(e);
-                            e.printStackTrace();
-                            Ques.setText("Error parsing JSON");
-                        }
+                try {
+                    int result = response.getInt("response_code");
+                    if (result == 5) {
+                        //makeApiCall();
+                        //onResponse(response);
+                        //makeApiCall();
+                        return;
                     }
 
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
 
-                    Ques.setText("Loading...");
-
-                    makeApiCall();
+                    if (result == 0) {
 
 
+                        JSONArray resultsArray = response.getJSONArray("results");
+
+                        JSONObject resultObject = resultsArray.getJSONObject(0);
+                        String correctAnswer = resultObject.getString("correct_answer");
+                        String question = resultObject.getString("question");
+
+                        JSONArray incorrectAnswersArray = resultObject.getJSONArray("incorrect_answers");
+
+
+                        Ques.setText(question);
+                        if (question.contains("&quot;")) {
+                            // String newquestion = question.replace("&quot;", "");
+                            String newquestion = Html.fromHtml(question).toString();
+                            Ques.setText(newquestion);
+
+                        }
+
+                        if (question.contains("&#039;")) {
+                            //String newquestion = question.replace("&#039;", "");
+                            String newquestion = Html.fromHtml(question).toString();
+                            Ques.setText(newquestion);
+                        }
+
+                        if (question.contains("&amp;")) {
+                            //String newquestion = question.replace("&amp;", "");
+                            String newquestion = Html.fromHtml(question).toString();
+                            Ques.setText(newquestion);
+                        }
+
+                        Answer1.setText(correctAnswer);
+
+
+                        for (int i = 0; i < Math.min(3, incorrectAnswersArray.length()); i++) {
+                            String incorrectAnswer = incorrectAnswersArray.getString(i);
+                            if (i == 0) {
+                                Answer2.setText(incorrectAnswer);
+                                if (incorrectAnswer.contains("&AMP;")) {
+                                    //String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer2.setText(incorrectAnswer);
+                                }
+                                if (incorrectAnswer.contains("#039;")) {
+                                    //  String newanswer = incorrectAnswer.replace("#039;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer2.setText(incorrectAnswer);
+                                }
+                                if (incorrectAnswer.contains("&#039;")) {
+                                    // String newanswer = incorrectAnswer.replace("&#039;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer2.setText(incorrectAnswer);
+                                }
+                            } else if (i == 1) {
+                                Answer3.setText(incorrectAnswer);
+                                if (incorrectAnswer.contains("&AMP;")) {
+                                    //String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer3.setText(incorrectAnswer);
+                                }
+                                if (incorrectAnswer.contains("#039;")) {
+                                    //String newanswer = incorrectAnswer.replace("#039;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer3.setText(incorrectAnswer);
+                                }
+                                if (incorrectAnswer.contains("&#039;")) {
+                                    //String newanswer = incorrectAnswer.replace("&#039;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer3.setText(incorrectAnswer);
+                                }
+                            } else if (i == 2) {
+                                Answer4.setText(incorrectAnswer);
+                                if (incorrectAnswer.contains("&AMP;")) {
+                                    // String newanswer = incorrectAnswer.replace("&AMP;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer4.setText(incorrectAnswer);
+                                }
+                                if (incorrectAnswer.contains("#039;")) {
+                                    //String newanswer = incorrectAnswer.replace("#039;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer4.setText(incorrectAnswer);
+                                }
+                                if (incorrectAnswer.contains("&#039;")) {
+                                    //String newanswer = incorrectAnswer.replace("&#039;", "");
+                                    String newanswer = Html.fromHtml(incorrectAnswer).toString();
+                                    Answer4.setText(incorrectAnswer);
+                                }
+                            }
+
+                        }
+
+                    }
+
+
+                } catch (JSONException e) {
+                    //   throw new RuntimeException(e);
+                    e.printStackTrace();
+                    Ques.setText("Error parsing JSON");
                 }
-            });
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
-            requestQueue.add(jsonObjectRequest_);
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Ques.setText("Loading...");
+
+                makeApiCall();
+
+
+            }
+
+        });
 
 
 
-        }
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonObjectRequest_);
 
 
 
-    public void OnResponse(){ }
+    }
+
+
+
+
+    public void OnResponse(){
+
+    }
+
 
     public void goHome(){
         Intent intent = new Intent(this, MainActivity.class);
@@ -378,8 +387,8 @@ public class Trivia extends AppCompatActivity {
     }
 
     public void Answer3Choose(){
-     AnswerBox3.setBackgroundColor(Color.RED);
-     resetButtonColor(AnswerBox3);
+        AnswerBox3.setBackgroundColor(Color.RED);
+        resetButtonColor(AnswerBox3);
     }
 
     public void Answer4Choose(){
@@ -549,20 +558,20 @@ public class Trivia extends AppCompatActivity {
 
     private void AnswerChoose(Button selectedAnswer){
 
-       if(selectedAnswer == AnswerBox1){
-           QuestionTracker++;
-           makeApiCall();
-       }
-       else{
-           try {
-               Thread.sleep(1000);
-           }
-           catch (InterruptedException e){
-               e.printStackTrace();
-           }
-               QuestionTracker++;
-               makeApiCall();
-       }
+        if(selectedAnswer == AnswerBox1){
+            QuestionTracker++;
+            makeApiCall();
+        }
+        else{
+            try {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e){
+                e.printStackTrace();
+            }
+            QuestionTracker++;
+            makeApiCall();
+        }
 
 
     }

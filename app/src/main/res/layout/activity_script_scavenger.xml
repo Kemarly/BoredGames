@@ -14,14 +14,14 @@
         android:layout_marginBottom="550dp"
         android:text="Script Scavenger!"
         android:textAlignment="center"
-        android:textColor="@color/purple_700"
-        android:textSize="50sp"
+        android:textAllCaps="true"
+        android:textColor="@color/darkYellow"
+        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <ImageButton
         android:id="@+id/TrophyIcon"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_6" />
 
-    <EditText
+    <TextView
         android:id="@+id/Time"
         android:layout_width="366dp"
         android:layout_height="161dp"
@@ -95,28 +95,61 @@
         android:id="@+id/userInput"
         android:layout_width="491dp"
         android:layout_height="60dp"
-        android:hint="type an answer"
+        android:hint="Type an Answer"
         android:inputType="text"
-        android:textSize="20dp"
         android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
+        app:layout_constraintVertical_bias="0.219" />
 
-    <EditText
+    <TextView
         android:id="@+id/generateWord"
-        android:layout_width="497dp"
-        android:layout_height="120dp"
+        android:layout_width="510dp"
+        android:layout_height="116dp"
         android:inputType="text"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/userInput"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
+        app:layout_constraintVertical_bias="0.957" />
+
+    <Button
+        android:id="@+id/enter"
+        android:layout_width="198dp"
+        android:layout_height="90dp"
+        android:background="@color/darkYellow"
+        android:text="Enter"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userInput"
+        app:layout_constraintVertical_bias="0.019"
+        android:onClick="updateText"/>
+
+    <TextView
+        android:id="@+id/answers"
+        android:layout_width="674dp"
+        android:layout_height="392dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter"
+        app:layout_constraintVertical_bias="0.01" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
