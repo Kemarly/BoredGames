@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,8 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+    private static final String PREF_IS_LOGGED_IN = "isLoggedIn";
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
@@ -30,10 +33,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+       
+
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         signupRedirectText = findViewById(R.id.signupRedirectText);
         loginButton = findViewById(R.id.login_button);
+
 
        loginButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -78,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void checkUser(){
+
+
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
@@ -94,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(passwordFromDB.equals(userPassword)){
                         loginUsername.setError(null);
+                        //setLoggedIn(true);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     } else{
@@ -112,6 +121,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+
+    private void startMainActivity(){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
