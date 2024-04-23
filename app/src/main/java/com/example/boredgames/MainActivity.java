@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import java.net.InetSocketAddress;
 
@@ -19,13 +20,21 @@ public class MainActivity extends AppCompatActivity {
     ImageButton HomeButton;
     ImageButton ProfileButton;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
+
         triviaButton = (ImageButton) findViewById(R.id.imageButton);
-        //triviaButton.setTooltipText("Trivia: Test your knowledge");
+
+        triviaButton.setTooltipText("Trivia");
+
         triviaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {openTrivia(); }
@@ -35,7 +44,12 @@ public class MainActivity extends AppCompatActivity {
         scriptscavButton.setTooltipText("Script Scavenger: How many words can you find from the letters of the word given?");
         scriptscavButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {openScriptScav();}
+
+            public void onClick(View v) {
+                openScriptScav();
+
+            }
+
         });
 
         HangmanButton = (ImageButton) findViewById(R.id.imageView3);
@@ -115,4 +129,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
+
 }
