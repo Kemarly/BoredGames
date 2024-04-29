@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/imageView5"
+        android:id="@+id/settingsIcon"
         android:layout_width="171dp"
         android:layout_height="136dp"
         android:layout_marginStart="45dp"
@@ -96,7 +96,7 @@
         app:srcCompat="@drawable/img_5" />
 
     <ImageButton
-        android:id="@+id/imageView8"
+        android:id="@+id/profileIcon"
         android:layout_width="175dp"
         android:layout_height="136dp"
         android:layout_marginStart="709dp"
@@ -109,7 +109,7 @@
         app:srcCompat="@drawable/img_8" />
 
     <ImageButton
-        android:id="@+id/imageView7"
+        android:id="@+id/homeIcon"
         android:layout_width="173dp"
         android:layout_height="135dp"
         android:layout_marginStart="496dp"
