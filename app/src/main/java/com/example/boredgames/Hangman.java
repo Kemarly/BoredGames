@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Hangman extends AppCompatActivity {
@@ -18,7 +17,7 @@ public class Hangman extends AppCompatActivity {
         setContentView(R.layout.activity_hangman);
 
 
-        homebutton = (ImageButton) findViewById(R.id.imageView7);
+        homebutton = (ImageButton) findViewById(R.id.homeIcon);
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override

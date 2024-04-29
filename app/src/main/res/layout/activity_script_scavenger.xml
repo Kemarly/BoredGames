@@ -8,15 +8,18 @@
     tools:context=".ScriptScavenger">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/scriptName"
+        android:layout_width="611dp"
+        android:layout_height="105dp"
         android:layout_marginBottom="550dp"
-        android:text="Script Scavenger!"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
+        android:text="Script Scavenger"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/darkYellow"
         android:textSize="60sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +40,7 @@
         app:srcCompat="@drawable/img_5" />
 
     <ImageButton
-        android:id="@+id/imageView8"
+        android:id="@+id/profileIcon"
         android:layout_width="175dp"
         android:layout_height="136dp"
         android:layout_marginStart="709dp"
@@ -50,7 +53,7 @@
         app:srcCompat="@drawable/img_8" />
 
     <ImageButton
-        android:id="@+id/imageView7"
+        android:id="@+id/homeIcon"
         android:layout_width="173dp"
         android:layout_height="135dp"
         android:layout_marginStart="496dp"
@@ -63,7 +66,7 @@
         app:srcCompat="@drawable/img_7" />
 
     <ImageButton
-        android:id="@+id/imageView5"
+        android:id="@+id/settingsIcon"
         android:layout_width="171dp"
         android:layout_height="136dp"
         android:layout_marginStart="45dp"
@@ -81,7 +84,7 @@
         android:layout_height="161dp"
         android:text="60"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/navy"
         android:textSize="96sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -151,5 +154,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter"
         app:layout_constraintVertical_bias="0.01" />
+
+    <ImageButton
+        android:id="@+id/tutorial"
+        android:layout_width="102dp"
+        android:layout_height="114dp"
+        android:background="@color/clear"
+        android:scaleX="5"
+        android:scaleY="5"
+        android:src="@drawable/questionmark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
