@@ -4,7 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+//import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,12 +15,14 @@ import java.util.Random;
 public class ScriptScavenger extends AppCompatActivity {
 
     ImageButton HomeButton;
+    ImageButton tutorial;
     CountDownTimer timer;
     EditText userInput;
     TextView generateWord;
     TextView tickTime;
     TextView answers;
     int score;
+    long timeLeftInMillis = 60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,36 +44,39 @@ public class ScriptScavenger extends AppCompatActivity {
         userInput = findViewById(R.id.userInput);
 
         Button enterButton = findViewById(R.id.enter);
-        enterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String inputText = userInput.getText().toString();
-                if (!inputText.isEmpty()) {
-                    String currentAnswers = answers.getText().toString();
-                    if (!currentAnswers.isEmpty()) {
-                        currentAnswers += "\n";
-                    }
-                    currentAnswers += inputText;
-                    answers.setText(currentAnswers);
-                    userInput.setText("");
+        enterButton.setOnClickListener(v -> {
+            String inputText = userInput.getText().toString();
+            if (!inputText.isEmpty()) {
+                String currentAnswers = answers.getText().toString();
+                if (!currentAnswers.isEmpty()) {
+                    currentAnswers += "\n";
                 }
+                currentAnswers += inputText;
+                answers.setText(currentAnswers);
+                userInput.setText("");
             }
         });
+
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(v -> tutorial());
     }
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    private void resetTimer()
-    {
-        timer = new CountDownTimer(60000, 1000) {
+    private void resetTimer() {
+        timer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                // Update UI with remaining time
                 long secondsRemaining = millisUntilFinished / 1000;
                 tickTime.setText(String.valueOf(secondsRemaining));
+                // Store remaining time
+                timeLeftInMillis = millisUntilFinished;
             }
             @Override
             public void onFinish() {
+                // Handle timer finish
                 tickTime.setText("0");
                 showScore();
             }
@@ -82,8 +87,9 @@ public class ScriptScavenger extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Game Over");
         builder.setMessage("Your score: " + score);
-        builder.setPositiveButton("OK", (dialog, which) -> {
+        builder.setPositiveButton("Quit", (dialog, which) -> {
             dialog.dismiss();
+            GoHome();
         });
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -94,5 +100,16 @@ public class ScriptScavenger extends AppCompatActivity {
         int index = rand.nextInt(words.length);
         return words[index];
     }
-    private void tutorial(){}
+    private void tutorial() {
+        timer.cancel();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Tutorial");
+        builder.setMessage("Try to create as many words as you can with the letters of the word that has been given.");
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            resetTimer();
+            dialog.dismiss();
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }
