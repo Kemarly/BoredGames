@@ -45,6 +45,7 @@ import java.io.*;
 import java.lang.Thread;
 
 import android.os.Handler;
+import android.widget.Toast;
 
 import java.sql.Time;
 
@@ -56,6 +57,8 @@ public class Trivia extends AppCompatActivity {
     private int QuestionTracker = 0;
 
     private int ScoreTracker = 0;
+
+    EditText Username;
 
     TextView QuestionBox;
 
@@ -518,22 +521,30 @@ public class Trivia extends AppCompatActivity {
                         public void onClick(View v) {
                             if (v == AnswerBox4) {
 
+                                Username = (EditText) findViewById(R.id.Prompt);
+
+                                Username.setVisibility(View.VISIBLE);
 
 
-                                EditText UserPrompt = findViewById(R.id.Prompt);
-                                String UserInput = UserPrompt.getText().toString();
+                                String UserInput = Username.getText().toString();
+                                QuestionBox.setText("Save Score After Entering Name");
 
-                                QuestionBox.setText(UserInput);
+                                if(!UserInput.isEmpty()) {
+                                    QuestionBox.setText("Score has been saved for " + UserInput);
 
+                                    Username.setVisibility(View.GONE);
+                                    //QuestionBox.setText("SCORE SAVED");
 
-                                //QuestionBox.setText("SCORE SAVED");
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference reference = database.getReference("scores");
 
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference reference = database.getReference("scores");
+                                    // Save the score under a new auto-generated key
+                                    reference.child("Trivia Scores").child(UserInput).setValue(ScoreTracker + "/10");
 
-                                // Save the score under a new auto-generated key
-                                reference.child("Trivia Scores").child(UserInput).setValue(ScoreTracker);
-
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });
