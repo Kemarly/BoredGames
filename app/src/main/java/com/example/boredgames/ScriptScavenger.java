@@ -10,10 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.os.CountDownTimer;
 import android.widget.TextView;
+import org.languagetool.JLanguageTool;
+import org.languagetool.Languages;
+//import org.languagetool.language.BritishEnglish;
+import org.languagetool.rules.RuleMatch;
+import java.util.List;
 import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
-
     ImageButton HomeButton;
     ImageButton tutorial;
     CountDownTimer timer;
@@ -59,8 +63,10 @@ public class ScriptScavenger extends AppCompatActivity {
 
         tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(v -> tutorial());
+
+        //checkSpelling();
     }
-    public void GoHome(){
+    public void GoHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -68,21 +74,19 @@ public class ScriptScavenger extends AppCompatActivity {
         timer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                // Update UI with remaining time
                 long secondsRemaining = millisUntilFinished / 1000;
                 tickTime.setText(String.valueOf(secondsRemaining));
-                // Store remaining time
                 timeLeftInMillis = millisUntilFinished;
             }
             @Override
             public void onFinish() {
-                // Handle timer finish
                 tickTime.setText("0");
                 showScore();
             }
         }.start();
     }
-    private void showScore(){
+
+    private void showScore() {
         score = 0;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Game Over");
@@ -95,7 +99,16 @@ public class ScriptScavenger extends AppCompatActivity {
         dialog.show();
     }
     private String genRandom() {
-        String[] words = {"onomatopoeia", "miscellaneous", "serendipity", "ostentatious", "infinitesimal"};
+        String[] words = {"onomatopoeia", "miscellaneous", "serendipity", "ostentatious", "infinitesimal",
+                "phenolphthalein","pejoratively", "sanctimonious", "improvisatory", "ordinariness",
+                "juxtaposition", "apprehensive", "cumulonimbus", "equivocation", "ambiguity",
+                "disenfranchisement", "ecclesiastical", "adaptability", "maneuverability", "decriminalization",
+                "compartmentalization", "verisimilitude", "anisopoikilocytosis", "antidisestablishmentarianism", " decamethyltetrasiloxane",
+                "bathysiderodromophobia", "schizosaccharomycetaceae", "methylenetetrahydrofolate", "floccinaucinihilipilificate", "sulfoquinovosyldiacylglycerol",
+                "uvulopalatopharyngoplasty", "laryngotracheobronchopneumonitis", "representative", "Superfluous", "anaesthesia",
+                "artificial", "responsibility", "magnanimous", "emotionally", "zygomaticofacial",
+                "abduction", "academic", "diabetic", "capitalism", "encyclopedia",
+                "insubordination", "lobotomize", "enthusiastic", "anniversary", "examination"};
         Random rand = new Random();
         int index = rand.nextInt(words.length);
         return words[index];
@@ -111,5 +124,21 @@ public class ScriptScavenger extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+    private void checkSpelling() {
+        JLanguageTool langTool = new JLanguageTool(Languages.getLanguageForShortCode("en-GB"));
+        //JLanguageTool langTool = new JLanguageTool(new BritishEnglish());
+        try {
+            List<RuleMatch> matches = langTool.check("ERROR!");
+            for (RuleMatch match : matches) {
+                System.out.println("Potential typo at characters " +
+                        match.getFromPos() + "-" + match.getToPos() + ": " +
+                        match.getMessage());
+                System.out.println("Suggested correction(s): " +
+                        match.getSuggestedReplacements());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
