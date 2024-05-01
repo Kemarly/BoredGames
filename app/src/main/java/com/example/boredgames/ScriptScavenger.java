@@ -57,6 +57,8 @@ public class ScriptScavenger extends AppCompatActivity {
                 }
                 currentAnswers += inputText;
                 answers.setText(currentAnswers);
+                score += inputText.length();
+
                 userInput.setText("");
             }
         });
@@ -87,13 +89,13 @@ public class ScriptScavenger extends AppCompatActivity {
     }
 
     private void showScore() {
-        score = 0;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Game Over");
         builder.setMessage("Your score: " + score);
         builder.setPositiveButton("Quit", (dialog, which) -> {
             dialog.dismiss();
             GoHome();
+            score = 0;
         });
         AlertDialog dialog = builder.create();
         dialog.show();
