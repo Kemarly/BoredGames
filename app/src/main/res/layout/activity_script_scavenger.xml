@@ -112,8 +112,8 @@
 
     <TextView
         android:id="@+id/generateWord"
-        android:layout_width="510dp"
-        android:layout_height="116dp"
+        android:layout_width="784dp"
+        android:layout_height="142dp"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/black"
