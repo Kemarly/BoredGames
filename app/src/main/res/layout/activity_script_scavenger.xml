@@ -9,23 +9,23 @@
 
     <TextView
         android:id="@+id/scriptName"
-        android:layout_width="611dp"
-        android:layout_height="105dp"
+        android:layout_width="700dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="550dp"
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:text="Script Scavenger"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/darkYellow"
+        android:textColor="@color/navy"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <ImageButton
         android:id="@+id/TrophyIcon"
@@ -90,10 +90,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
+        app:layout_constraintVertical_bias="0.676" />
 
     <EditText
         android:id="@+id/userInput"
@@ -106,10 +105,10 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
         android:id="@+id/generateWord"
@@ -144,8 +143,8 @@
 
     <TextView
         android:id="@+id/answers"
-        android:layout_width="674dp"
-        android:layout_height="392dp"
+        android:layout_width="751dp"
+        android:layout_height="318dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
