@@ -4,17 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+//import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.os.CountDownTimer;
 import android.widget.TextView;
-import android.widget.Toast;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.List;
 import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
@@ -27,18 +23,11 @@ public class ScriptScavenger extends AppCompatActivity {
     TextView answers;
     int score;
     long timeLeftInMillis = 60000;
-    DictionaryService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_script_scavenger);
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.dictionaryapi.com/api/v3/references/collegiate/json/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        service = retrofit.create(DictionaryService.class);
 
         tickTime = findViewById(R.id.Time);
         resetTimer();
@@ -58,19 +47,27 @@ public class ScriptScavenger extends AppCompatActivity {
         enterButton.setOnClickListener(v -> {
             String inputText = userInput.getText().toString();
             if (!inputText.isEmpty()) {
-                checkSpelling(inputText);
+                String currentAnswers = answers.getText().toString();
+                if (!currentAnswers.isEmpty()) {
+                    currentAnswers += "\n";
+                }
+                currentAnswers += inputText;
+                answers.setText(currentAnswers);
+                score += inputText.length();
+
+                userInput.setText("");
             }
         });
 
         tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(v -> tutorial());
-    }
 
+        //checkSpelling();
+    }
     public void GoHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
     private void resetTimer() {
         timer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
@@ -99,10 +96,9 @@ public class ScriptScavenger extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
     private String genRandom() {
         String[] words = {"onomatopoeia", "miscellaneous", "serendipity", "ostentatious", "infinitesimal",
-                "phenolphthalein", "pejoratively", "sanctimonious", "improvisatory", "ordinariness",
+                "phenolphthalein","pejoratively", "sanctimonious", "improvisatory", "ordinariness",
                 "juxtaposition", "apprehensive", "cumulonimbus", "equivocation", "ambiguity",
                 "disenfranchisement", "ecclesiastical", "adaptability", "maneuverability", "decriminalization",
                 "compartmentalization", "verisimilitude", "anisopoikilocytosis", "antidisestablishmentarianism", " decamethyltetrasiloxane",
@@ -115,7 +111,6 @@ public class ScriptScavenger extends AppCompatActivity {
         int index = rand.nextInt(words.length);
         return words[index];
     }
-
     private void tutorial() {
         timer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -128,58 +123,20 @@ public class ScriptScavenger extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-    private void checkLetters(String inputText) {
-        String generatedWord = generateWord.getText().toString().toLowerCase();
-        inputText = inputText.toLowerCase();
-        boolean isValid = true;
-        for (int i = 0; i < inputText.length(); i++) {
-            char c = inputText.charAt(i);
-            if (generatedWord.indexOf(c) == -1) {
-                isValid = false;
-                break;
+    private void checkSpelling() {
+        JLanguageTool langTool = new JLanguageTool(Languages.getLanguageForShortCode("en-GB"));
+        //JLanguageTool langTool = new JLanguageTool(new BritishEnglish());
+        try {
+            List<RuleMatch> matches = langTool.check("ERROR!");
+            for (RuleMatch match : matches) {
+                System.out.println("Potential typo at characters " +
+                        match.getFromPos() + "-" + match.getToPos() + ": " +
+                        match.getMessage());
+                System.out.println("Suggested correction(s): " +
+                        match.getSuggestedReplacements());
             }
-        }
-        if (isValid) {
-            String currentAnswers = answers.getText().toString();
-            if (!currentAnswers.isEmpty()) {
-                currentAnswers += "\n";
-            }
-            currentAnswers += inputText;
-            answers.setText(currentAnswers);
-            score += inputText.length();
-            userInput.setText("");
-        } else {
-            Toast.makeText(this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
-            userInput.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-
-    private void checkSpelling(String inputText) {
-        checkLetters(inputText);
-        Call<Object> call = service.lookupWord(inputText);
-        call.enqueue(new Callback<Object>() {
-            @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
-                if (response.isSuccessful()) {
-                    String currentAnswers = answers.getText().toString();
-                    if (!currentAnswers.isEmpty()) {
-                        currentAnswers += "\n";
-                    }
-                    currentAnswers += inputText;
-                    answers.setText(currentAnswers);
-                    score += inputText.length();
-                    userInput.setText("");
-                } else {
-                    Toast.makeText(ScriptScavenger.this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
-                    userInput.setText("");
-                }
-            }
-            @Override
-            public void onFailure(Call<Object> call, Throwable t) {
-                Toast.makeText(ScriptScavenger.this, "Error: Invalid Spelling", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
 }
