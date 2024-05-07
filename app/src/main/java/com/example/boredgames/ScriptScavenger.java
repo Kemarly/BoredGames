@@ -130,33 +130,7 @@ public class ScriptScavenger extends AppCompatActivity {
         dialog.show();
     }
 
-//    private void checkLetters(String inputText) {
-//        String generatedWord = generateWord.getText().toString().toLowerCase();
-//        inputText = inputText.toLowerCase();
-//        boolean isValid = true;
-//        for (int i = 0; i < inputText.length(); i++) {
-//            char c = inputText.charAt(i);
-//            if (generatedWord.indexOf(c) == -1) {
-//                isValid = false;
-//                break;
-//            }
-//        }
-//        if (isValid) {
-//            String currentAnswers = answers.getText().toString();
-//            if (!currentAnswers.isEmpty()) {
-//                currentAnswers += "\n";
-//            }
-//            currentAnswers += inputText;
-//            answers.setText(currentAnswers);
-//            score += inputText.length();
-//            userInput.setText("");
-//        } else {
-//            Toast.makeText(this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
-//            userInput.setText("");
-//        }
-//    }
-
-    private void checkWord(String inputText) {
+    private void checkLetters(String inputText) {
         String generatedWord = generateWord.getText().toString().toLowerCase();
         inputText = inputText.toLowerCase();
         boolean isValid = true;
@@ -168,37 +142,38 @@ public class ScriptScavenger extends AppCompatActivity {
             }
         }
         if (isValid) {
-            addToScore(inputText);
+            String currentAnswers = answers.getText().toString();
+            if (!currentAnswers.isEmpty()) {
+                currentAnswers += "\n";
+            }
+            currentAnswers += inputText;
+            answers.setText(currentAnswers);
+            score += inputText.length();
+            userInput.setText("");
         } else {
-            checkLetters();
+            Toast.makeText(this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
+            userInput.setText("");
         }
-    }
-
-    private void addToScore(String inputText) {
-        String currentAnswers = answers.getText().toString();
-        if (!currentAnswers.isEmpty()) {
-            currentAnswers += "\n";
-        }
-        currentAnswers += inputText;
-        answers.setText(currentAnswers);
-        score += inputText.length();
-        userInput.setText("");
-    }
-
-    private void checkLetters() {
-        Toast.makeText(this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
-        userInput.setText("");
     }
 
     private void checkSpelling(String inputText) {
+        checkLetters(inputText);
         Call<Object> call = service.lookupWord(inputText);
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (response.isSuccessful()) {
-                    addToScore(inputText);
+                    String currentAnswers = answers.getText().toString();
+                    if (!currentAnswers.isEmpty()) {
+                        currentAnswers += "\n";
+                    }
+                    currentAnswers += inputText;
+                    answers.setText(currentAnswers);
+                    score += inputText.length();
+                    userInput.setText("");
                 } else {
-                    checkLetters();
+                    Toast.makeText(ScriptScavenger.this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
+                    userInput.setText("");
                 }
             }
             @Override
