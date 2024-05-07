@@ -27,7 +27,7 @@ public class ScriptScavenger extends AppCompatActivity {
     TextView answers;
     int score;
     long timeLeftInMillis = 60000;
-    DictionaryService service; // Declare service at the class level
+    DictionaryService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class ScriptScavenger extends AppCompatActivity {
                 .baseUrl("https://www.dictionaryapi.com/api/v3/references/collegiate/json/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        service = retrofit.create(DictionaryService.class); // Initialize service
+        service = retrofit.create(DictionaryService.class);
 
         tickTime = findViewById(R.id.Time);
         resetTimer();
@@ -156,34 +156,57 @@ public class ScriptScavenger extends AppCompatActivity {
         }
     }
 
+    private void checkWord(String inputText) {
+        String generatedWord = generateWord.getText().toString().toLowerCase();
+        inputText = inputText.toLowerCase();
+        boolean isValid = true;
+        for (int i = 0; i < inputText.length(); i++) {
+            char c = inputText.charAt(i);
+            if (generatedWord.indexOf(c) == -1) {
+                isValid = false;
+                break;
+            }
+        }
+        if (isValid) {
+            addToScore(inputText);
+        } else {
+            showErrorToast();
+        }
+    }
+
+    private void addToScore(String inputText) {
+        String currentAnswers = answers.getText().toString();
+        if (!currentAnswers.isEmpty()) {
+            currentAnswers += "\n";
+        }
+        currentAnswers += inputText;
+        answers.setText(currentAnswers);
+        score += inputText.length();
+        userInput.setText("");
+    }
+
+    private void showErrorToast() {
+        Toast.makeText(this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
+        userInput.setText("");
+    }
+
     private void checkSpelling(String inputText) {
-        checkLetters(inputText);
         Call<Object> call = service.lookupWord(inputText);
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (response.isSuccessful()) {
-                    // Word is valid, add it to currentAnswers
-                    String currentAnswers = answers.getText().toString();
-                    if (!currentAnswers.isEmpty()) {
-                        currentAnswers += "\n";
-                    }
-                    currentAnswers += inputText;
-                    answers.setText(currentAnswers);
-                    score += inputText.length();
-                    userInput.setText("");
+                    addToScore(inputText);
                 } else {
-                    // Word is not valid, show an error message
-                    Toast.makeText(ScriptScavenger.this, "Invalid word! Use only letters from the current word.", Toast.LENGTH_SHORT).show();
-                    userInput.setText("");
+                    showErrorToast();
                 }
             }
-
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                // Show an error message in case of failure
-                Toast.makeText(ScriptScavenger.this, "Error: Invalid Spelling" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScriptScavenger.this, "Error: Invalid Spelling", Toast.LENGTH_SHORT).show();
+                userInput.setText("");
             }
         });
     }
+
 }
