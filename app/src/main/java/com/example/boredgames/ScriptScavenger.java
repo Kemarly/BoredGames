@@ -182,7 +182,7 @@ public class ScriptScavenger extends AppCompatActivity {
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
                 // Show an error message in case of failure
-                Toast.makeText(ScriptScavenger.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScriptScavenger.this, "Error: Invalid Spelling" , Toast.LENGTH_SHORT).show();
             }
         });
     }
