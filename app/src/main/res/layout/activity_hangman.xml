@@ -70,6 +70,7 @@
         android:orientation="horizontal"
         android:padding="16dp"
         android:rowCount="6"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -367,31 +368,15 @@
         app:srcCompat="@drawable/img_19" />
 
     <TextView
-        android:id="@+id/GameOver"
-        android:layout_width="344dp"
-        android:layout_height="157dp"
-        android:layout_marginStart="384dp"
-        android:layout_marginTop="131dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="992dp"
-        android:text="GAME OVER!"
-        android:textColor="@color/black"
-        android:textSize="55sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/RandomWord"
         android:layout_width="424dp"
         android:layout_height="179dp"
         android:layout_marginStart="348dp"
-        android:layout_marginTop="341dp"
+        android:layout_marginTop="274dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="760dp"
-        android:text="_ _ _ _ _ _ _ _ _ _"
+        android:layout_marginBottom="827dp"
+        android:text=""
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -399,6 +384,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/ShowWord"
+        android:layout_width="466dp"
+        android:layout_height="204dp"
+        android:layout_marginStart="322dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="1014dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/SaveScore"
+        android:layout_width="336dp"
+        android:layout_height="85dp"
+
+        android:layout_marginStart="242dp"
+        android:layout_marginEnd="222dp"
+        android:text="Save Score"
+        android:textSize="40sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+    <EditText
+        android:id="@+id/Prompt"
+        android:layout_width="378dp"
+        android:layout_height="79dp"
+        android:hint="ENTER YOUR NAME: "
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/RandomWord"
+        app:layout_constraintStart_toStartOf="@+id/RandomWord"
+        app:layout_constraintTop_toBottomOf="@+id/RandomWord" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
