@@ -4,9 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Sudoku extends AppCompatActivity {
@@ -56,4 +60,26 @@ public class Sudoku extends AppCompatActivity {
     }
     private void makeGrid(){}
     private void userAnswers(TextView num){}
+    private class SudokuAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return 81;
+        }
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                //convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
+            }
+            convertView.setBackgroundResource(R.drawable.grid_line);
+            return convertView;
+        }
+    }
 }

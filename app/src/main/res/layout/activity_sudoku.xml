@@ -10,7 +10,7 @@
     <GridView
         android:id="@+id/gridView"
         android:layout_width="684dp"
-        android:layout_height="674dp"
+        android:layout_height="684dp"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:horizontalSpacing="1dp"
@@ -19,8 +19,10 @@
         android:textColor="@color/black"
         android:verticalSpacing="274dp"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="215dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Time"
@@ -36,7 +38,8 @@
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.085"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
         android:id="@+id/scriptName"
@@ -52,7 +55,8 @@
         app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.013"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <ImageButton
         android:id="@+id/TrophyIcon"
@@ -65,7 +69,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_5" />
+        app:srcCompat="@drawable/img_5"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/profileIcon"
@@ -78,7 +83,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_8" />
+        app:srcCompat="@drawable/img_8"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/HomeButton"
@@ -91,7 +97,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_7" />
+        app:srcCompat="@drawable/img_7"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/settingsIcon"
@@ -104,7 +111,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_6" />
+        app:srcCompat="@drawable/img_6"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/delete"
@@ -115,7 +123,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.023"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/undo"
@@ -128,6 +137,7 @@
         app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/baseline_undo_24" />
+        app:srcCompat="@drawable/baseline_undo_24"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
