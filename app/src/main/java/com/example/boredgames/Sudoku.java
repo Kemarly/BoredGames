@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 public class Sudoku extends AppCompatActivity {
 
     ImageButton HomeButton;
@@ -37,18 +39,12 @@ public class Sudoku extends AppCompatActivity {
         HomeButton.setOnClickListener(v -> GoHome());
 
         grid = new TextView[9][9];
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-
-            }
-        }
-        //makeGrid();
+        makeGrid();
         resetTimer();
 
         tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(v -> tutorial());
     }
-
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -71,7 +67,23 @@ public class Sudoku extends AppCompatActivity {
 
     private void makeGrid() {
         GridView gridView = findViewById(R.id.gridView);
-        gridView.setAdapter(new SudokuAdapter());
+        SudokuAdapter adapter = new SudokuAdapter();
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener((parent, view, position, id) -> {
+            int row = position / 9;
+            int col = position % 9;
+            userAnswers(grid[row][col]);
+        });
+    }
+    private int[][] makePuzzle(){
+        int[][] puzzle = new int[9][9];
+        Random random = new Random();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                puzzle[i][j] = random.nextInt(9) + 1;
+            }
+        }
+        return puzzle;
     }
 
     private void userAnswers(TextView num) {}
