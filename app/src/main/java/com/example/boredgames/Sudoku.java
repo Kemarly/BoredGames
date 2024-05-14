@@ -117,8 +117,8 @@ public class Sudoku extends AppCompatActivity {
     private void tutorial() {
         timer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Tutorial");
-        builder.setMessage("Try to create as many words as you can with the letters of the word that has been given.");
+        builder.setTitle("Instructions");
+        builder.setMessage("Fill in the squares with numbers from 1-9 with no repeated numbers in each line, horizontally or vertically.\nFor each 3×3 squares marked out in the grid, there cannot be any repeat numbers either");
         builder.setPositiveButton("OK", (dialog, which) -> {
             resetTimer();
             dialog.dismiss();
