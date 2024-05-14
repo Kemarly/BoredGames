@@ -35,7 +35,6 @@ public class SudokuBoard extends View {
         int height = getHeight();
         int cellSize = width / 9;
 
-        // Draw Sudoku grid lines
         boardPaint.setStyle(Paint.Style.STROKE);
         boardPaint.setStrokeWidth(2);
         boardPaint.setColor(boardColor);
