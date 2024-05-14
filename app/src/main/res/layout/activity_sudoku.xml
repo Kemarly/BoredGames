@@ -7,6 +7,16 @@
     android:background="@drawable/sudokuback4"
     tools:context=".Sudoku">
 
+    <com.example.boredgames.SudokuBoard
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+    </com.example.boredgames.SudokuBoard>
+
     <GridView
         android:id="@+id/gridView"
         android:layout_width="684dp"

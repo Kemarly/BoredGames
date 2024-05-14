@@ -19,6 +19,7 @@ public class Sudoku extends AppCompatActivity {
     CountDownTimer timer;
     private TextView[][] grid;
     private int [][] answers;
+    TextView gridCell;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -58,8 +59,15 @@ public class Sudoku extends AppCompatActivity {
             public void onFinish() { }
         }.start();
     }
-    private void makeGrid(){}
-    private void userAnswers(TextView num){}
+    private void makeGrid()
+    {
+        GridView gridView = findViewById(R.id.gridView);
+        gridView.setAdapter(new SudokuAdapter());
+    }
+    private void userAnswers(TextView num)
+    {
+
+    }
     private class SudokuAdapter extends BaseAdapter {
         @Override
         public int getCount() {
@@ -67,7 +75,7 @@ public class Sudoku extends AppCompatActivity {
         }
         @Override
         public Object getItem(int position) {
-            return null;
+            return 0;
         }
         @Override
         public long getItemId(int position) {
@@ -76,8 +84,9 @@ public class Sudoku extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                //convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
+                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
             }
+            gridCell = convertView.findViewById(R.id.gridCell);
             convertView.setBackgroundResource(R.drawable.grid_line);
             return convertView;
         }
