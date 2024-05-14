@@ -1,9 +1,13 @@
 package com.example.boredgames;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +15,19 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Sudoku extends AppCompatActivity {
 
     ImageButton HomeButton;
+    ImageButton tutorial;
     CountDownTimer timer;
     private TextView[][] grid;
     private int [][] answers;
     TextView gridCell;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +44,17 @@ public class Sudoku extends AppCompatActivity {
         }
         //makeGrid();
         resetTimer();
+
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(v -> tutorial());
     }
 
     public void GoHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    private void resetTimer()
-    {
+
+    private void resetTimer() {
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             long elapsedTime = 0;
             @Override
@@ -59,28 +68,30 @@ public class Sudoku extends AppCompatActivity {
             public void onFinish() { }
         }.start();
     }
-    private void makeGrid()
-    {
+
+    private void makeGrid() {
         GridView gridView = findViewById(R.id.gridView);
         gridView.setAdapter(new SudokuAdapter());
     }
-    private void userAnswers(TextView num)
-    {
 
-    }
+    private void userAnswers(TextView num) {}
+
     private class SudokuAdapter extends BaseAdapter {
         @Override
         public int getCount() {
             return 81;
         }
+
         @Override
         public Object getItem(int position) {
             return 0;
         }
+
         @Override
         public long getItemId(int position) {
             return 0;
         }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
@@ -89,6 +100,47 @@ public class Sudoku extends AppCompatActivity {
             gridCell = convertView.findViewById(R.id.gridCell);
             convertView.setBackgroundResource(R.drawable.grid_line);
             return convertView;
+        }
+    }
+    private void tutorial() {
+        timer.cancel();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Tutorial");
+        builder.setMessage("Try to create as many words as you can with the letters of the word that has been given.");
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            resetTimer();
+            dialog.dismiss();
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    public class SudokuBoard extends View {
+        private final int boardColor;
+        private final Paint boardPaint = new Paint();
+
+        public SudokuBoard(Context context, @Nullable AttributeSet attrs) {
+            super(context, attrs);
+            TypedArray arr = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SudokuBoard, 0, 0);
+            try {
+                boardColor = arr.getColor(R.styleable.SudokuBoard_boardColor, 0);
+            } finally {
+                arr.recycle();
+            }
+        }
+        @Override
+        protected void onMeasure(int wid, int hei) {
+            super.onMeasure(wid, hei);
+            int dimension = Math.min(this.getWidth(), this.getHeight());
+            setMeasuredDimension(dimension, dimension);
+        }
+        @Override
+        protected void onDraw(Canvas canvas) {
+            boardPaint.setStyle(Paint.Style.STROKE);
+            boardPaint.setStrokeWidth(16);
+            boardPaint.setColor(boardColor);
+            boardPaint.setAntiAlias(true);
+
+            canvas.drawRect(0, 0, getWidth(), getHeight(), boardPaint);
         }
     }
 }

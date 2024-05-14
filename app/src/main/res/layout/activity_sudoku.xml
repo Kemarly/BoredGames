@@ -7,16 +7,6 @@
     android:background="@drawable/sudokuback4"
     tools:context=".Sudoku">
 
-    <com.example.boredgames.SudokuBoard
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-
-
-    </com.example.boredgames.SudokuBoard>
-
     <GridView
         android:id="@+id/gridView"
         android:layout_width="684dp"
@@ -149,5 +139,20 @@
         app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/baseline_undo_24"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tutorial"
+        android:layout_width="102dp"
+        android:layout_height="114dp"
+        android:background="@color/clear"
+        android:scaleX="5"
+        android:scaleY="5"
+        android:src="@drawable/questionmark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
