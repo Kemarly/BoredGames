@@ -7,11 +7,11 @@
     android:background="@drawable/sudokuback4"
     tools:context=".Sudoku">
 
-    <com.example.boredgames.SudokuBoard
-        android:id="@+id/sudokuBoard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:boardColor="@color/black" />
+<!--    <com.example.boredgames.SudokuBoard-->
+<!--        android:id="@+id/sudokuBoard"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:boardColor="@color/black" />-->
 
     <GridView
         android:id="@+id/gridView"
@@ -19,16 +19,16 @@
         android:layout_height="684dp"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:horizontalSpacing="1dp"
+        android:horizontalSpacing="2dp"
         android:numColumns="9"
         android:stretchMode="columnWidth"
-        android:background="@drawable/sudokuback4"
-        android:verticalSpacing="1dp"
+        android:verticalSpacing="2dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
 
     <TextView
         android:id="@+id/Time"
@@ -41,10 +41,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085"
+        app:layout_constraintVertical_bias="0.163"
         tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
@@ -54,14 +53,13 @@
         android:text="Sudoku"
         android:textAlignment="center"
         android:textColor="@color/purple_700"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013"
+        app:layout_constraintVertical_bias="0.05"
         tools:ignore="HardcodedText,TextSizeCheck" />
 
     <ImageButton
@@ -124,12 +122,12 @@
         android:id="@+id/delete"
         android:layout_width="81dp"
         android:layout_height="86dp"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="148dp"
         android:src="@drawable/baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.221"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -139,17 +137,17 @@
         android:layout_marginStart="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022"
+        app:layout_constraintVertical_bias="0.213"
         app:srcCompat="@drawable/baseline_undo_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/tutorial"
-        android:layout_width="102dp"
-        android:layout_height="114dp"
+        android:layout_width="65dp"
+        android:layout_height="77dp"
         android:background="@color/clear"
         android:scaleX="5"
         android:scaleY="5"
@@ -159,6 +157,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.001" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
