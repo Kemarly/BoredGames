@@ -169,4 +169,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/SaveScore"
+        android:layout_width="272dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:text="Save Score"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/homeIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Prompt"
+        app:layout_constraintTop_toBottomOf="@+id/Time"
+        app:layout_constraintVertical_bias="0.462" />
+
+    <EditText
+        android:id="@+id/Prompt"
+        android:layout_width="384dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="36dp"
+        android:hint="Enter Your Name: "
+        android:textSize="40dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/TrophyIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Time"
+        app:layout_constraintVertical_bias="0.43" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

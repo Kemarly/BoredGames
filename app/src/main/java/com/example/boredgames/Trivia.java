@@ -526,7 +526,7 @@ public class Trivia extends AppCompatActivity {
                                     DatabaseReference reference = database.getReference("scores");
 
                                     // Save the score under a new auto-generated key
-                                    reference.child("Trivia Scores").child(UserInput).setValue(ScoreTracker + "/10");
+                                    reference.child("Trivia Scores").child(UserInput).setValue(ScoreTracker);
 
                                 }
                                 else{
