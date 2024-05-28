@@ -132,7 +132,8 @@ public class Hangman extends AppCompatActivity {
         String under = " ";
 
         String WordBox = RandomWord();
-        PrintWord.setText(WordBox);
+       // PrintWord.setText(WordBox);
+
         // Print out dashes instead of word
         List<Character> PlayerGuess = new ArrayList<>();
 
@@ -858,7 +859,7 @@ public class Hangman extends AppCompatActivity {
                         DatabaseReference reference = database.getReference("scores");
 
                         // Save the score under a new auto-generated key
-                        reference.child("Hangman Scores").child(UserInput).setValue(ScoreTracker + "/6");
+                        reference.child("Hangman Scores").child(UserInput).setValue(ScoreTracker);
 
                     }
                     else{

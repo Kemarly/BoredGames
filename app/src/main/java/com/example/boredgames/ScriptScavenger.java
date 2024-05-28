@@ -2,14 +2,21 @@ package com.example.boredgames;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +36,10 @@ public class ScriptScavenger extends AppCompatActivity {
     long timeLeftInMillis = 60000;
     DictionaryService service;
 
+    Button Save;
+
+    EditText Username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +57,8 @@ public class ScriptScavenger extends AppCompatActivity {
 
         HomeButton = findViewById(R.id.homeIcon);
         HomeButton.setOnClickListener(v -> GoHome());
+
+
 
         generateWord = findViewById(R.id.generateWord);
         String randomWord = genRandom();
@@ -97,7 +110,37 @@ public class ScriptScavenger extends AppCompatActivity {
             GoHome();
             score = 0;
         });
-        AlertDialog dialog = builder.create();
+        builder.setNegativeButton("Save Score", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Username = (EditText) findViewById(R.id.Prompt);
+                        Username.setVisibility(View.VISIBLE);
+
+
+                        Save = (Button) findViewById(R.id.SaveScore);
+                        Save.setVisibility(View.VISIBLE);
+                        String UserInput = Username.getText().toString();
+                        Save.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String UserInput = Username.getText().toString();
+                                if(!UserInput.isEmpty()){
+
+                                    generateWord.setText("Score has been saved for " + UserInput);
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference reference = database.getReference("scores");
+
+                                    reference.child("ScriptScavenger Scores").child(UserInput).setValue(score);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                AlertDialog dialog = builder.create();
         dialog.show();
     }
 
