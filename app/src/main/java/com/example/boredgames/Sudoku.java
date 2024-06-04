@@ -25,7 +25,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class Sudoku extends AppCompatActivity {
-
     ImageButton HomeButton;
     ImageButton tutorial;
     CountDownTimer timer;
@@ -108,7 +107,6 @@ public class Sudoku extends AppCompatActivity {
         public Object getItem(int position) {
             return 0;
         }
-
         @Override
         public long getItemId(int position) {
             return 0;
