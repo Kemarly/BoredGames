@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +26,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class Sudoku extends AppCompatActivity {
-
     ImageButton HomeButton;
     ImageButton tutorial;
     CountDownTimer timer;
@@ -38,7 +38,7 @@ public class Sudoku extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku);
 
-        HomeButton = (ImageButton) findViewById(R.id.HomeButton);
+        HomeButton = findViewById(R.id.HomeButton);
         HomeButton.setOnClickListener(v -> GoHome());
 
         grid = new TextView[9][9];
@@ -48,24 +48,28 @@ public class Sudoku extends AppCompatActivity {
         tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(v -> tutorial());
     }
-    public void GoHome(){
+
+    public void GoHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     private void resetTimer() {
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             long elapsedTime = 0;
+
             @Override
-            public void onTick(long millisUntilFinished)
-            {
+            public void onTick(long millisUntilFinished) {
                 elapsedTime += 1000;
                 TextView timerTextView = findViewById(R.id.Time);
                 timerTextView.setText(String.valueOf(elapsedTime / 1000));
             }
             @Override
-            public void onFinish() { }
+            public void onFinish() {
+            }
         }.start();
     }
+
     private void makeGrid() {
         GridView gridView = findViewById(R.id.gridView);
         SudokuAdapter adapter = new SudokuAdapter();
@@ -78,7 +82,7 @@ public class Sudoku extends AppCompatActivity {
         answers = makePuzzle();
     }
     @NonNull
-    private int[][] makePuzzle(){
+    private int[][] makePuzzle() {
         int[][] puzzle = new int[9][9];
         Random random = new Random();
         for (int i = 0; i < 9; i++) {
@@ -93,40 +97,40 @@ public class Sudoku extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
         builder.setView(input);
-        builder.setPositiveButton("OK", (dialog, which) -> num.setText(input.getText().toString()));
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            String inputNum = input.getText().toString();
+            if (inputNum.matches("\\d")) {
+                int numEntered = Integer.parseInt(inputNum);
+                if (numEntered >= 1 && numEntered <= 9) {num.setText(inputNum);}}
+            else {Toast.makeText(Sudoku.this, "Please enter only numbers between 1 and 9", Toast.LENGTH_SHORT).show();}
+        });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
     }
 
     private class SudokuAdapter extends BaseAdapter {
         @Override
-        public int getCount() {
-            return 81;
-        }
+        public int getCount() {return 81;}
         @NonNull
         @Override
-        public Object getItem(int position) {
-            return 0;
-        }
-
+        public Object getItem(int position) {return 0;}
         @Override
-        public long getItemId(int position) {
-            return 0;
-        }
+        public long getItemId(int position) {return 0;}
         @NonNull
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
-            }
+            if (convertView == null) {convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);}
             gridCell = convertView.findViewById(R.id.gridCell);
             int row = position / 9;
             int col = position % 9;
             grid[row][col] = gridCell;
             convertView.setBackgroundResource(R.drawable.grid_line);
+            int width = parent.getWidth() / 9;
+            convertView.setLayoutParams(new GridView.LayoutParams(width, width));
             return convertView;
         }
     }
+
     private void tutorial() {
         timer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -139,6 +143,7 @@ public class Sudoku extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     public class SudokuBoard extends View {
         private final int boardColor;
         private final Paint boardPaint = new Paint();
@@ -168,28 +173,20 @@ public class Sudoku extends AppCompatActivity {
             canvas.drawRect(0, 0, getWidth(), getHeight(), boardPaint);
             board(canvas);
         }
-        private void thickLine(){
+        private void thickLine() {
             boardPaint.setStyle(Paint.Style.STROKE);
             boardPaint.setStrokeWidth(10);
             boardPaint.setColor(boardColor);
         }
-        private void thinLine(){
+        private void thinLine() {
             boardPaint.setStyle(Paint.Style.STROKE);
             boardPaint.setStrokeWidth(4);
             boardPaint.setColor(boardColor);
         }
-        private void board(Canvas canvas){
+        private void board(Canvas canvas) {
             int width = getWidth();
             int height = getHeight();
             int cellSize = width / 9;
-//            for (int i=0;i<10;i++){
-//                if (i%3==0){thickLine();}else thinLine();
-//                canvas.drawLine(gridCell* i,0,gridCell*i,getWidth(),boardPaint);
-//            }
-//            for (int j = 0; j<10;j++){
-//                if (j%3==0){thickLine();}else thinLine();
-//                canvas.drawLine(0,gridCell* j,getWidth(),gridCell* j, boardPaint);
-//            }
             for (int i = 0; i <= 9; i++) {
                 if (i % 3 == 0) thickLine();
                 else thinLine();
