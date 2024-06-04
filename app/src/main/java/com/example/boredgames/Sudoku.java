@@ -110,29 +110,23 @@ public class Sudoku extends AppCompatActivity {
 
     private class SudokuAdapter extends BaseAdapter {
         @Override
-        public int getCount() {
-            return 81;
-        }
+        public int getCount() {return 81;}
         @NonNull
         @Override
-        public Object getItem(int position) {
-            return 0;
-        }
+        public Object getItem(int position) {return 0;}
         @Override
-        public long getItemId(int position) {
-            return 0;
-        }
+        public long getItemId(int position) {return 0;}
         @NonNull
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
-            }
+            if (convertView == null) {convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);}
             gridCell = convertView.findViewById(R.id.gridCell);
             int row = position / 9;
             int col = position % 9;
             grid[row][col] = gridCell;
             convertView.setBackgroundResource(R.drawable.grid_line);
+            int width = parent.getWidth() / 9;
+            convertView.setLayoutParams(new GridView.LayoutParams(width, width));
             return convertView;
         }
     }
