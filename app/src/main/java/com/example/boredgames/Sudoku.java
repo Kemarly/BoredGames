@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -92,7 +93,15 @@ public class Sudoku extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
         builder.setView(input);
-        builder.setPositiveButton("OK", (dialog, which) -> num.setText(input.getText().toString()));
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            String inputNum = input.getText().toString();
+            if (inputNum.matches("\\d"))
+            {
+                int numEntered = Integer.parseInt(inputNum);
+                if (numEntered >= 1 && numEntered <= 9) {num.setText(inputNum);}
+                else {Toast.makeText(Sudoku.this, "Please enter a number between 1 and 9", Toast.LENGTH_SHORT).show();}
+            }
+            else {Toast.makeText(Sudoku.this, "Please enter only numbers", Toast.LENGTH_SHORT).show();}});
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
     }
