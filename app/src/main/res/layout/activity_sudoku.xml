@@ -154,4 +154,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001" />
 
+    <Button
+        android:id="@+id/complete"
+        android:layout_width="355dp"
+        android:layout_height="100dp"
+        android:background="@color/darkYellow"
+        android:text="Complete"
+        android:textAlignment="center"
+        android:textColor="@color/navy"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridView"
+        app:layout_constraintVertical_bias="0.047" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
