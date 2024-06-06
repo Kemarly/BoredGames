@@ -1,13 +1,8 @@
 package com.example.boredgames;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -123,7 +117,13 @@ public class Sudoku extends AppCompatActivity {
             int row = position / 9;
             int col = position % 9;
             grid[row][col] = gridCell;
-            convertView.setBackgroundResource(R.drawable.grid_line);
+            if ((row % 3 == 0 && col % 3 == 0) ||
+                    (row % 3 == 0 && col == 8) ||
+                    (row == 8 && col % 3 == 0) ||
+                    (row == 9 && col == 9)) {
+                convertView.setBackgroundResource(R.drawable.grid_line_thick);}
+            else if (row % 3 == 0 || col % 3 == 0) {convertView.setBackgroundResource(R.drawable.grid_line_thick);}
+            else {convertView.setBackgroundResource(R.drawable.grid_line_thin);}
             int width = parent.getWidth() / 9;
             convertView.setLayoutParams(new GridView.LayoutParams(width, width));
             return convertView;
