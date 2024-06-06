@@ -57,7 +57,6 @@ public class Sudoku extends AppCompatActivity {
     private void resetTimer() {
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             long elapsedTime = 0;
-
             @Override
             public void onTick(long millisUntilFinished) {
                 elapsedTime += 1000;
@@ -65,8 +64,7 @@ public class Sudoku extends AppCompatActivity {
                 timerTextView.setText(String.valueOf(elapsedTime / 1000));
             }
             @Override
-            public void onFinish() {
-            }
+            public void onFinish() {}
         }.start();
     }
 
@@ -144,18 +142,15 @@ public class Sudoku extends AppCompatActivity {
         dialog.show();
     }
 
-    public class SudokuBoard extends View {
+    public static class SudokuBoard extends View {
         private final int boardColor;
         private final Paint boardPaint = new Paint();
 
         public SudokuBoard(Context context, @Nullable AttributeSet attrs) {
             super(context, attrs);
             TypedArray arr = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SudokuBoard, 0, 0);
-            try {
-                boardColor = arr.getColor(R.styleable.SudokuBoard_boardColor, 0);
-            } finally {
-                arr.recycle();
-            }
+            try {boardColor = arr.getColor(R.styleable.SudokuBoard_boardColor, 0);}
+            finally {arr.recycle();}
         }
         @Override
         protected void onMeasure(int wid, int hei) {
@@ -171,28 +166,6 @@ public class Sudoku extends AppCompatActivity {
             boardPaint.setAntiAlias(true);
 
             canvas.drawRect(0, 0, getWidth(), getHeight(), boardPaint);
-            board(canvas);
-        }
-        private void thickLine() {
-            boardPaint.setStyle(Paint.Style.STROKE);
-            boardPaint.setStrokeWidth(10);
-            boardPaint.setColor(boardColor);
-        }
-        private void thinLine() {
-            boardPaint.setStyle(Paint.Style.STROKE);
-            boardPaint.setStrokeWidth(4);
-            boardPaint.setColor(boardColor);
-        }
-        private void board(Canvas canvas) {
-            int width = getWidth();
-            int height = getHeight();
-            int cellSize = width / 9;
-            for (int i = 0; i <= 9; i++) {
-                if (i % 3 == 0) thickLine();
-                else thinLine();
-                canvas.drawLine(i * cellSize, 0, i * cellSize, height, boardPaint);
-                canvas.drawLine(0, i * cellSize, width, i * cellSize, boardPaint);
-            }
         }
     }
 }
