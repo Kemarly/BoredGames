@@ -32,6 +32,7 @@ public class Sudoku extends AppCompatActivity {
     private TextView[][] grid;
     private int [][] answers;
     TextView gridCell;
+    int score = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
