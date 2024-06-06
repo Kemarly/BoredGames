@@ -141,31 +141,4 @@ public class Sudoku extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-    public static class SudokuBoard extends View {
-        private final int boardColor;
-        private final Paint boardPaint = new Paint();
-
-        public SudokuBoard(Context context, @Nullable AttributeSet attrs) {
-            super(context, attrs);
-            TypedArray arr = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SudokuBoard, 0, 0);
-            try {boardColor = arr.getColor(R.styleable.SudokuBoard_boardColor, 0);}
-            finally {arr.recycle();}
-        }
-        @Override
-        protected void onMeasure(int wid, int hei) {
-            super.onMeasure(wid, hei);
-            int dimension = Math.min(this.getWidth(), this.getHeight());
-            setMeasuredDimension(dimension, dimension);
-        }
-        @Override
-        protected void onDraw(Canvas canvas) {
-            boardPaint.setStyle(Paint.Style.STROKE);
-            boardPaint.setStrokeWidth(16);
-            boardPaint.setColor(boardColor);
-            boardPaint.setAntiAlias(true);
-
-            canvas.drawRect(0, 0, getWidth(), getHeight(), boardPaint);
-        }
-    }
 }
