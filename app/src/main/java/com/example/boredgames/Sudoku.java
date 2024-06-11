@@ -55,15 +55,11 @@ public class Sudoku extends AppCompatActivity {
         tutorial.setOnClickListener(v -> tutorial());
     }
     public void completeGame() {
-        int emptyCells = emptyCells();
+        int emptyCells = 0;
+        for (int i = 0; i < 9; i++) {for (int j = 0; j < 9; j++) {if (grid[i][j].getText().toString().isEmpty()) {emptyCells++;}}}
         score -= emptyCells;
         if (score < 0) score = 0;
         showScore();
-    }
-    private int emptyCells() {
-        int emptyCells = 0;
-        for (int i = 0; i < 9; i++) {for (int j = 0; j < 9; j++) {if (grid[i][j].getText().toString().isEmpty()) {emptyCells++;}}}
-        return emptyCells;
     }
 
     public void GoHome() {
