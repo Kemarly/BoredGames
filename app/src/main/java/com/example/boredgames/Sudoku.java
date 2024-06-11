@@ -54,8 +54,18 @@ public class Sudoku extends AppCompatActivity {
         tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(v -> tutorial());
     }
-    public void completeGame(){
-        showScore();}
+    public void completeGame() {
+        int emptyCells = emptyCells();
+        score -= emptyCells;
+        if (score < 0) score = 0;
+        showScore();
+    }
+    private int emptyCells() {
+        int emptyCells = 0;
+        for (int i = 0; i < 9; i++) {for (int j = 0; j < 9; j++) {if (grid[i][j].getText().toString().isEmpty()) {emptyCells++;}}}
+        return emptyCells;
+    }
+
     public void GoHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -157,8 +167,10 @@ public class Sudoku extends AppCompatActivity {
         builder.setPositiveButton("Quit", (dialog, which) -> {
             dialog.dismiss();
             GoHome();
-            score = 0;
-        });}
+            score = 100;
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();}
     private void tutorial() {
         timer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
