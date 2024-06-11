@@ -1,12 +1,18 @@
 package com.example.boredgames;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -14,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +29,7 @@ import java.util.Random;
 public class Sudoku extends AppCompatActivity {
     ImageButton HomeButton;
     ImageButton tutorial;
+    Button complete;
     CountDownTimer timer;
     private TextView[][] grid;
     private int [][] answers;
@@ -36,6 +44,9 @@ public class Sudoku extends AppCompatActivity {
         HomeButton = findViewById(R.id.HomeButton);
         HomeButton.setOnClickListener(v -> GoHome());
 
+        complete = findViewById(R.id.complete);
+        complete.setOnClickListener(v -> completeGame());
+
         grid = new TextView[9][9];
         makeGrid();
         resetTimer();
@@ -43,7 +54,8 @@ public class Sudoku extends AppCompatActivity {
         tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(v -> tutorial());
     }
-
+    public void completeGame(){
+        showScore();}
     public void GoHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -74,6 +86,7 @@ public class Sudoku extends AppCompatActivity {
         });
         answers = makePuzzle();
     }
+
     @NonNull
     private int[][] makePuzzle() {
         int[][] puzzle = new int[9][9];
@@ -103,33 +116,49 @@ public class Sudoku extends AppCompatActivity {
 
     private class SudokuAdapter extends BaseAdapter {
         @Override
-        public int getCount() {return 81;}
+        public int getCount() { return 81; }
         @NonNull
         @Override
-        public Object getItem(int position) {return 0;}
+        public Object getItem(int position) { return 0; }
         @Override
-        public long getItemId(int position) {return 0;}
+        public long getItemId(int position) { return 0; }
         @NonNull
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);}
+            if (convertView == null) {
+                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
+            }
+
             gridCell = convertView.findViewById(R.id.gridCell);
             int row = position / 9;
             int col = position % 9;
             grid[row][col] = gridCell;
-            if ((row % 3 == 0 && col % 3 == 0) ||
-                    (row % 3 == 0 && col == 8) ||
-                    (row == 8 && col % 3 == 0) ||
-                    (row == 9 && col == 9)) {
-                convertView.setBackgroundResource(R.drawable.grid_line_thick);}
-            else if (row % 3 == 0 || col % 3 == 0) {convertView.setBackgroundResource(R.drawable.grid_line_thick);}
-            else {convertView.setBackgroundResource(R.drawable.grid_line_thin);}
+
+            int backgroundResource;
+            if (row == 0 || row == 8 || col == 0 || col == 8 ||
+                    row % 3 == 0 || col % 3 == 0) {
+                backgroundResource = R.drawable.grid_line_thick;
+            } else {
+                backgroundResource = R.drawable.grid_line_thin;
+            }
+
+            convertView.setBackgroundResource(backgroundResource);
+
             int width = parent.getWidth() / 9;
             convertView.setLayoutParams(new GridView.LayoutParams(width, width));
+
             return convertView;
         }
     }
-
+    private void showScore() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Game Over");
+        builder.setMessage("Your score: " + score);
+        builder.setPositiveButton("Quit", (dialog, which) -> {
+            dialog.dismiss();
+            GoHome();
+            score = 0;
+        });}
     private void tutorial() {
         timer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

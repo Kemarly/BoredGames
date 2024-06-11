@@ -35,9 +35,7 @@ public class ScriptScavenger extends AppCompatActivity {
     int score;
     long timeLeftInMillis = 60000;
     DictionaryService service;
-
     Button Save;
-
     EditText Username;
 
     @Override
@@ -57,8 +55,6 @@ public class ScriptScavenger extends AppCompatActivity {
 
         HomeButton = findViewById(R.id.homeIcon);
         HomeButton.setOnClickListener(v -> GoHome());
-
-
 
         generateWord = findViewById(R.id.generateWord);
         String randomWord = genRandom();
