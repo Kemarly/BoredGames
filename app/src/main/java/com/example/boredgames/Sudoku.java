@@ -75,6 +75,10 @@ public class Sudoku extends AppCompatActivity {
                 elapsedTime += 1000;
                 TextView timerTextView = findViewById(R.id.Time);
                 timerTextView.setText(String.valueOf(elapsedTime / 1000));
+                if ((elapsedTime / 1000) % 10 == 0) {
+                    score -= 1;
+                    if (score < 0) score = 0;
+                }
             }
             @Override
             public void onFinish() {}
