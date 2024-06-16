@@ -2,12 +2,9 @@ package com.example.boredgames;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import java.net.InetSocketAddress;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {openSudoku();}
         });
 
-        SettingsButton = (ImageButton) findViewById(R.id.imageView5);
+        SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
         SettingsButton.setTooltipText("Settings");
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,14 +77,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {openAchievements();}
         });
 
-        HomeButton=(ImageButton)findViewById(R.id.imageView7);
+        HomeButton=(ImageButton)findViewById(R.id.homeIcon);
         HomeButton.setTooltipText("Home");
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {}
         });
 
-        ProfileButton = (ImageButton) findViewById(R.id.imageView8);
+        ProfileButton = (ImageButton) findViewById(R.id.profileIcon);
         ProfileButton.setTooltipText("Profile");
         ProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override

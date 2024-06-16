@@ -8,20 +8,24 @@
     tools:context=".ScriptScavenger">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/scriptName"
+        android:layout_width="700dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="550dp"
-        android:text="Script Scavenger!"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="Script Scavenger"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/darkYellow"
+        android:textColor="@color/navy"
         android:textSize="60sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <ImageButton
         android:id="@+id/TrophyIcon"
@@ -37,7 +41,7 @@
         app:srcCompat="@drawable/img_5" />
 
     <ImageButton
-        android:id="@+id/imageView8"
+        android:id="@+id/profileIcon"
         android:layout_width="175dp"
         android:layout_height="136dp"
         android:layout_marginStart="709dp"
@@ -50,7 +54,7 @@
         app:srcCompat="@drawable/img_8" />
 
     <ImageButton
-        android:id="@+id/imageView7"
+        android:id="@+id/homeIcon"
         android:layout_width="173dp"
         android:layout_height="135dp"
         android:layout_marginStart="496dp"
@@ -63,7 +67,7 @@
         app:srcCompat="@drawable/img_7" />
 
     <ImageButton
-        android:id="@+id/imageView5"
+        android:id="@+id/settingsIcon"
         android:layout_width="171dp"
         android:layout_height="136dp"
         android:layout_marginStart="45dp"
@@ -81,15 +85,14 @@
         android:layout_height="161dp"
         android:text="60"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/navy"
         android:textSize="96sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
+        app:layout_constraintVertical_bias="0.676" />
 
     <EditText
         android:id="@+id/userInput"
@@ -102,25 +105,24 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
         android:id="@+id/generateWord"
-        android:layout_width="510dp"
-        android:layout_height="116dp"
+        android:layout_width="784dp"
+        android:layout_height="142dp"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/userInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/enter"
@@ -141,8 +143,8 @@
 
     <TextView
         android:id="@+id/answers"
-        android:layout_width="674dp"
-        android:layout_height="392dp"
+        android:layout_width="751dp"
+        android:layout_height="318dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -151,5 +153,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter"
         app:layout_constraintVertical_bias="0.01" />
+
+    <ImageButton
+        android:id="@+id/tutorial"
+        android:layout_width="102dp"
+        android:layout_height="114dp"
+        android:background="@color/clear"
+        android:scaleX="5"
+        android:scaleY="5"
+        android:src="@drawable/questionmark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/SaveScore"
+        android:layout_width="272dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:text="Save Score"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/homeIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Prompt"
+        app:layout_constraintTop_toBottomOf="@+id/Time"
+        app:layout_constraintVertical_bias="0.462" />
+
+    <EditText
+        android:id="@+id/Prompt"
+        android:layout_width="384dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="36dp"
+        android:hint="Enter Your Name: "
+        android:textSize="40dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/TrophyIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Time"
+        app:layout_constraintVertical_bias="0.43" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

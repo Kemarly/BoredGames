@@ -6,20 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".Achievements">
 
+
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/scriptName"
+        android:layout_width="700dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="550dp"
-        android:text="Achievements"
-        android:textColor="@color/purple_700"
-        android:textSize="50sp"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="Leaderboards"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/navy"
+        android:textSize="60sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
-
+        app:layout_constraintVertical_bias="0.04" />
 
     <ImageButton
         android:id="@+id/TrophyIcon"
@@ -35,7 +41,7 @@
         app:srcCompat="@drawable/img_5" />
 
     <ImageButton
-        android:id="@+id/imageView8"
+        android:id="@+id/profileIcon"
         android:layout_width="175dp"
         android:layout_height="136dp"
         android:layout_marginStart="709dp"
@@ -48,7 +54,7 @@
         app:srcCompat="@drawable/img_8" />
 
     <ImageButton
-        android:id="@+id/imageView7"
+        android:id="@+id/homeIcon"
         android:layout_width="173dp"
         android:layout_height="135dp"
         android:layout_marginStart="496dp"
@@ -61,7 +67,7 @@
         app:srcCompat="@drawable/img_7" />
 
     <ImageButton
-        android:id="@+id/imageView5"
+        android:id="@+id/settingsIcon"
         android:layout_width="171dp"
         android:layout_height="136dp"
         android:layout_marginStart="45dp"
@@ -72,6 +78,135 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_6" />
+
+
+    <TextView
+        android:id="@+id/ScriptScore"
+        android:layout_width="343dp"
+        android:layout_height="351dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="428dp"
+        android:layout_marginBottom="685dp"
+        android:gravity="center"
+        android:text="SCORES"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TriviaScore"
+        android:layout_width="343dp"
+        android:layout_height="351dp"
+        android:layout_marginStart="404dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="685dp"
+        android:gravity="center"
+        android:text="SCORES"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/HangmanScore"
+        android:layout_width="343dp"
+        android:layout_height="351dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="628dp"
+        android:layout_marginEnd="425dp"
+        android:layout_marginBottom="242dp"
+        android:gravity="center"
+        android:text="SCORES"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/SudokuScore"
+        android:layout_width="343dp"
+        android:layout_height="351dp"
+        android:layout_marginStart="422dp"
+        android:layout_marginTop="628dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="242dp"
+        android:gravity="center"
+        android:text="Sudoku Scores"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="343dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="428dp"
+        android:text="Script Scavenger Scores"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ScriptScore" />
+
+    <TextView
+        android:layout_width="343dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="423dp"
+        android:layout_marginEnd="34dp"
+        android:text="Trivia Scores"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TriviaScore" />
+
+    <TextView
+        android:layout_width="343dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="428dp"
+        android:text="Hangman Scores"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/HangmanScore" />
+
+    <TextView
+        android:layout_width="343dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="423dp"
+        android:layout_marginEnd="34dp"
+        android:text="Sudoku Scores"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/SudokuScore" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

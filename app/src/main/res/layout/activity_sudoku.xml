@@ -7,180 +7,55 @@
     android:background="@drawable/sudokuback4"
     tools:context=".Sudoku">
 
-
     <GridView
         android:id="@+id/gridView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="676dp"
+        android:layout_height="610dp"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:horizontalSpacing="1dp"
         android:numColumns="9"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="274dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="241dp" />
+        android:verticalSpacing="1dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476" />
 
     <TextView
         android:id="@+id/Time"
-        android:layout_width="366dp"
-        android:layout_height="161dp"
-        android:text="60"
+        android:layout_width="286dp"
+        android:layout_height="110dp"
+        android:text="0"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="96sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="1362dp" />
-
-    <TextView
-        android:id="@+id/box"
-        android:layout_width="800dp"
-        android:layout_height="800dp"
-        android:gravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/gridView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.27"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
-        android:id="@+id/gridOne"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="1"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridFour"
-        app:layout_constraintEnd_toStartOf="@+id/gridTwo"
-        app:layout_constraintStart_toStartOf="@+id/box"
-        app:layout_constraintTop_toTopOf="@+id/box" />
-
-    <TextView
-        android:id="@+id/gridTwo"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="2"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridFive"
-        app:layout_constraintEnd_toStartOf="@+id/gridThree"
-        app:layout_constraintStart_toEndOf="@+id/gridOne"
-        app:layout_constraintTop_toTopOf="@+id/box" />
-
-    <TextView
-        android:id="@+id/gridThree"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="3"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridSix"
-        app:layout_constraintEnd_toEndOf="@+id/box"
-        app:layout_constraintStart_toEndOf="@+id/gridTwo"
-        app:layout_constraintTop_toTopOf="@+id/box" />
-
-    <TextView
-        android:id="@+id/gridFour"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="4"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridSeven"
-        app:layout_constraintEnd_toStartOf="@+id/gridFive"
-        app:layout_constraintStart_toStartOf="@+id/box"
-        app:layout_constraintTop_toBottomOf="@+id/gridOne"
-        tools:layout_editor_absoluteY="297dp" />
-
-    <TextView
-        android:id="@+id/gridFive"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="5"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridEight"
-        app:layout_constraintEnd_toStartOf="@+id/gridSix"
-        app:layout_constraintStart_toEndOf="@+id/gridFour"
-        app:layout_constraintTop_toBottomOf="@+id/gridTwo" />
-
-    <TextView
-        android:id="@+id/gridSix"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:layout_marginEnd="1dp"
-        android:gravity="center"
-        android:text="6"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridNine"
-        app:layout_constraintEnd_toEndOf="@+id/box"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/gridFive"
-        app:layout_constraintTop_toBottomOf="@+id/gridThree"
-        app:layout_constraintVertical_bias="0.971" />
-
-    <TextView
-        android:id="@+id/gridSeven"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="7"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/box"
-        app:layout_constraintEnd_toStartOf="@id/gridEight"
-        app:layout_constraintStart_toStartOf="@+id/box"
-        app:layout_constraintTop_toBottomOf="@+id/gridFour"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/gridEight"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="8"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/box"
-        app:layout_constraintEnd_toStartOf="@+id/gridNine"
-        app:layout_constraintStart_toEndOf="@+id/gridSeven"
-        app:layout_constraintTop_toBottomOf="@id/gridFive" />
-
-    <TextView
-        android:id="@+id/gridNine"
-        android:layout_width="266dp"
-        android:layout_height="266dp"
-        android:gravity="center"
-        android:text="9"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/box"
-        app:layout_constraintEnd_toEndOf="@+id/box"
-        app:layout_constraintStart_toEndOf="@+id/gridEight"
-        app:layout_constraintTop_toBottomOf="@+id/gridSix" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/scriptName"
+        android:layout_width="228dp"
+        android:layout_height="84dp"
         android:text="Sudoku"
+        android:textAlignment="center"
         android:textColor="@color/purple_700"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/box"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.05"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <ImageButton
         android:id="@+id/TrophyIcon"
@@ -193,10 +68,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_5" />
+        app:srcCompat="@drawable/img_5"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageView8"
+        android:id="@+id/profileIcon"
         android:layout_width="175dp"
         android:layout_height="136dp"
         android:layout_marginStart="709dp"
@@ -206,7 +82,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_8" />
+        app:srcCompat="@drawable/img_8"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/HomeButton"
@@ -219,10 +96,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_7" />
+        app:srcCompat="@drawable/img_7"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageView5"
+        android:id="@+id/settingsIcon"
         android:layout_width="171dp"
         android:layout_height="136dp"
         android:layout_marginStart="45dp"
@@ -232,18 +110,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_6" />
+        app:srcCompat="@drawable/img_6"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/delete"
         android:layout_width="81dp"
         android:layout_height="86dp"
-        android:layout_marginStart="268dp"
+        android:layout_marginStart="204dp"
         android:src="@drawable/baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
+        app:layout_constraintVertical_bias="0.146"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/undo"
@@ -252,11 +132,26 @@
         android:layout_marginStart="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094"
-        app:srcCompat="@drawable/baseline_undo_24" />
+        app:layout_constraintVertical_bias="0.145"
+        app:srcCompat="@drawable/baseline_undo_24"
+        tools:ignore="SpeakableTextPresentCheck" />
 
+    <ImageButton
+        android:id="@+id/tutorial"
+        android:layout_width="65dp"
+        android:layout_height="77dp"
+        android:background="@color/clear"
+        android:scaleX="5"
+        android:scaleY="5"
+        android:src="@drawable/questionmark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

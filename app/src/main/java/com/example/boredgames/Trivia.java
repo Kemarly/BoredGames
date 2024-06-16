@@ -1,7 +1,6 @@
 package com.example.boredgames;
 
 import android.content.Intent;
-import android.database.CursorWindowAllocationException;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.android.material.color.utilities.Score;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,27 +22,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
 import android.text.Html;
 
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
-
-import java.io.*;
 import java.lang.Thread;
 
 import android.os.Handler;
-
-import java.sql.Time;
+import android.widget.Toast;
 
 
 public class Trivia extends AppCompatActivity {
@@ -56,6 +44,8 @@ public class Trivia extends AppCompatActivity {
     private int QuestionTracker = 0;
 
     private int ScoreTracker = 0;
+
+    EditText Username;
 
     TextView QuestionBox;
 
@@ -90,7 +80,7 @@ public class Trivia extends AppCompatActivity {
 
         makeApiCall();
 
-        homebutton = (ImageButton) findViewById(R.id.imageView7);
+        homebutton = (ImageButton) findViewById(R.id.homeIcon);
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +89,7 @@ public class Trivia extends AppCompatActivity {
             }
         });
 
-        SettingsButton = (ImageButton) findViewById(R.id.imageView5);
+        SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
 
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +107,7 @@ public class Trivia extends AppCompatActivity {
             }
         });
 
-        ProfileButton = (ImageButton) findViewById(R.id.imageView8);
+        ProfileButton = (ImageButton) findViewById(R.id.profileIcon);
 
         ProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -411,7 +401,7 @@ public class Trivia extends AppCompatActivity {
 
         makeApiCall();
 
-        homebutton = (ImageButton) findViewById(R.id.imageView7);
+        homebutton = (ImageButton) findViewById(R.id.homeIcon);
 
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -420,7 +410,7 @@ public class Trivia extends AppCompatActivity {
             }
         });
 
-        SettingsButton = (ImageButton) findViewById(R.id.imageView5);
+        SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
 
         SettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -438,7 +428,7 @@ public class Trivia extends AppCompatActivity {
             }
         });
 
-        ProfileButton = (ImageButton) findViewById(R.id.imageView8);
+        ProfileButton = (ImageButton) findViewById(R.id.profileIcon);
 
         ProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -518,22 +508,30 @@ public class Trivia extends AppCompatActivity {
                         public void onClick(View v) {
                             if (v == AnswerBox4) {
 
+                                Username = (EditText) findViewById(R.id.Prompt);
+
+                                Username.setVisibility(View.VISIBLE);
 
 
-                                EditText UserPrompt = findViewById(R.id.Prompt);
-                                String UserInput = UserPrompt.getText().toString();
+                                String UserInput = Username.getText().toString();
+                                QuestionBox.setText("Save Score After Entering Name");
 
-                                QuestionBox.setText(UserInput);
+                                if(!UserInput.isEmpty()) {
+                                    QuestionBox.setText("Score has been saved for " + UserInput);
 
+                                    Username.setVisibility(View.GONE);
+                                    //QuestionBox.setText("SCORE SAVED");
 
-                                //QuestionBox.setText("SCORE SAVED");
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference reference = database.getReference("scores");
 
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference reference = database.getReference("scores");
+                                    // Save the score under a new auto-generated key
+                                    reference.child("Trivia Scores").child(UserInput).setValue(ScoreTracker);
 
-                                // Save the score under a new auto-generated key
-                                reference.child("Trivia Scores").child(UserInput).setValue(ScoreTracker);
-
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });
