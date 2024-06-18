@@ -144,47 +144,19 @@ public class Sudoku extends AppCompatActivity {
             int col = position % 9;
             grid[row][col] = gridCell;
 
-            int backgroundResource = getBackgroundResource(row, col);
+            int backgroundResource;
+            if (row == 0) {
+                backgroundResource = R.drawable.top_thick;
+            } else {
+                backgroundResource = R.drawable.grid_line_thin;
+            }
+
             convertView.setBackgroundResource(backgroundResource);
 
             int width = parent.getWidth() / 9;
             convertView.setLayoutParams(new GridView.LayoutParams(width, width));
 
             return convertView;
-        }
-
-        private int getBackgroundResource(int row, int col) {
-            boolean isTop = row == 0;
-            boolean isBottom = row == 8;
-            boolean isLeft = col == 0;
-            boolean isRight = col == 8;
-
-            boolean isSubgridTop = row % 3 == 0 && !isTop;
-            boolean isSubgridBottom = row % 3 == 2 && !isBottom;
-            boolean isSubgridLeft = col % 3 == 0 && !isLeft;
-            boolean isSubgridRight = col % 3 == 2 && !isRight;
-
-            if (isTop && isLeft) return R.drawable.top_left_thick;
-            if (isTop && isRight) return R.drawable.top_right_thick;
-            if (isBottom && isLeft) return R.drawable.bottom_left_thick;
-            if (isBottom && isRight) return R.drawable.bottom_right_thick;
-
-            if (isTop) return R.drawable.top_thick;
-            if (isBottom) return R.drawable.bottom_thick;
-            if (isLeft) return R.drawable.left_thick;
-            if (isRight) return R.drawable.right_thick;
-
-            if (isSubgridTop && isSubgridLeft) return R.drawable.top_left_thick;
-            if (isSubgridTop && isSubgridRight) return R.drawable.top_right_thick;
-            if (isSubgridBottom && isSubgridLeft) return R.drawable.bottom_left_thick;
-            if (isSubgridBottom && isSubgridRight) return R.drawable.bottom_right_thick;
-
-            if (isSubgridTop) return R.drawable.top_thick;
-            if (isSubgridBottom) return R.drawable.bottom_thick;
-            if (isSubgridLeft) return R.drawable.left_thick;
-            if (isSubgridRight) return R.drawable.right_thick;
-
-            return R.drawable.grid_line_thin;
         }
     }
 
