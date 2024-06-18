@@ -187,6 +187,7 @@ public class Sudoku extends AppCompatActivity {
             return R.drawable.grid_line_thin;
         }
     }
+
     private void showScore() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Game Over");
