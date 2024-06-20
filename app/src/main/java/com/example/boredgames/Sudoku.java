@@ -132,6 +132,7 @@ public class Sudoku extends AppCompatActivity {
         public Object getItem(int position) { return 0; }
         @Override
         public long getItemId(int position) { return 0; }
+        //use canvas to make 3x3 border
         @NonNull
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
