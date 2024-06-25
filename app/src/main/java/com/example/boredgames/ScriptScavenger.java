@@ -3,7 +3,6 @@ package com.example.boredgames;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,10 +38,11 @@ public class ScriptScavenger extends AppCompatActivity {
     int score;
     long timeLeftInMillis = 60000;
     DictionaryService service;
+
     Button Save;
+
     EditText Username;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +58,8 @@ public class ScriptScavenger extends AppCompatActivity {
         resetTimer();
         timer.start();
 
-        HomeButton = findViewById(R.id.HomeButton);
+        HomeButton = findViewById(R.id.homeIcon);
         HomeButton.setTooltipText("Home");
-
         HomeButton.setOnClickListener(v -> GoHome());
 
         SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
@@ -121,7 +120,6 @@ public class ScriptScavenger extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
-
     private void resetTimer() {
         timer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
@@ -149,36 +147,36 @@ public class ScriptScavenger extends AppCompatActivity {
             score = 0;
         });
         builder.setNegativeButton("Save Score", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Username = (EditText) findViewById(R.id.Prompt);
+                Username.setVisibility(View.VISIBLE);
+
+
+                Save = (Button) findViewById(R.id.SaveScore);
+                Save.setVisibility(View.VISIBLE);
+                String UserInput = Username.getText().toString();
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        Username = (EditText) findViewById(R.id.Prompt);
-                        Username.setVisibility(View.VISIBLE);
-
-
-                        Save = (Button) findViewById(R.id.SaveScore);
-                        Save.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
                         String UserInput = Username.getText().toString();
-                        Save.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                String UserInput = Username.getText().toString();
-                                if(!UserInput.isEmpty()){
+                        if(!UserInput.isEmpty()){
 
-                                    generateWord.setText("Score has been saved for " + UserInput);
-                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference reference = database.getReference("scores");
+                            generateWord.setText("Score has been saved for " + UserInput);
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("scores");
 
-                                    reference.child("ScriptScavenger Scores").child(UserInput).setValue(score);
-                                }
-                                else{
-                                    Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                            reference.child("ScriptScavenger Scores").child(UserInput).setValue(score);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
-                AlertDialog dialog = builder.create();
+            }
+        });
+        AlertDialog dialog = builder.create();
         dialog.show();
     }
 
