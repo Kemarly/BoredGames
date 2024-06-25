@@ -145,7 +145,8 @@ public class Sudoku extends AppCompatActivity {
     private int[][] makePuzzle() {
         int[][] board = new int[9][9];
         Random random = new Random();
-        int filledCells = 30;
+        int filledCells = random.nextInt(6) + 20;
+
         while (filledCells > 0) {
             int row = random.nextInt(9);
             int col = random.nextInt(9);
@@ -153,12 +154,11 @@ public class Sudoku extends AppCompatActivity {
                 int num = random.nextInt(9) + 1;
                 board[row][col] = num;
                 filledCells--;
-                if (isValid(board, row, col, num)) {
-                }
             }
         }
         return board;
     }
+
     private int[][] makeSolution(int[][] board) {
         int[][] solution = new int[9][9];
         for (int i = 0; i < 9; i++) {System.arraycopy(board[i], 0, solution[i], 0, 9);}
@@ -169,17 +169,19 @@ public class Sudoku extends AppCompatActivity {
     private void fillGrid() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if(grid[i][j]!= null){
-                if (puzzle[i][j] != 0) {
-                    grid[i][j].setText(String.valueOf(puzzle[i][j]));
-                    grid[i][j].setEnabled(false);
-                } else {
-                    grid[i][j].setText("");
-                    grid[i][j].setEnabled(true);
+                if (grid[i][j] != null) {
+                    if (puzzle[i][j] != 0) {
+                        grid[i][j].setText(String.valueOf(puzzle[i][j]));
+                        grid[i][j].setEnabled(false);
+                    } else {
+                        grid[i][j].setText("");
+                        grid[i][j].setEnabled(true);
+                    }
                 }
-            }}
+            }
         }
     }
+
     private boolean solve(int[][] board) {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
@@ -221,18 +223,17 @@ public class Sudoku extends AppCompatActivity {
     private class SudokuAdapter extends BaseAdapter {
         private Context context;
 
-        SudokuAdapter(Context context) {
-            this.context = context;
-        }
+        SudokuAdapter(Context context) {this.context = context;}
 
         @Override
-        public int getCount() { return 81; }
-        @NonNull
+        public int getCount() {return 81;}
+
         @Override
-        public Object getItem(int position) { return 0; }
+        public Object getItem(int position) {return null;}
+
         @Override
-        public long getItemId(int position) { return 0; }
-        //use canvas to make 3x3 border
+        public long getItemId(int position) {return 0;}
+
         @NonNull
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -245,14 +246,19 @@ public class Sudoku extends AppCompatActivity {
             int col = position % 9;
             grid[row][col] = gridCell;
 
-            int backgroundResource;
-            backgroundResource = R.drawable.grid_line_thin;
-
+            int backgroundResource = R.drawable.grid_line_thin;
             convertView.setBackgroundResource(backgroundResource);
 
             int width = parent.getWidth() / 9;
             convertView.setLayoutParams(new GridView.LayoutParams(width, width));
 
+            if (puzzle[row][col] != 0) {
+                gridCell.setText(String.valueOf(puzzle[row][col]));
+                gridCell.setEnabled(false);
+            } else {
+                gridCell.setText("");
+                gridCell.setEnabled(true);
+            }
             return convertView;
         }
     }

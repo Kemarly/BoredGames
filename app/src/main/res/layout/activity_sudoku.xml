@@ -114,31 +114,31 @@
         app:srcCompat="@drawable/img_6"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageButton
-        android:id="@+id/delete"
-        android:layout_width="81dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="204dp"
-        android:src="@drawable/baseline_delete_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/delete"-->
+<!--        android:layout_width="81dp"-->
+<!--        android:layout_height="86dp"-->
+<!--        android:layout_marginStart="204dp"-->
+<!--        android:src="@drawable/baseline_delete_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.102"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
-    <ImageButton
-        android:id="@+id/undo"
-        android:layout_width="83dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toEndOf="@+id/delete"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101"
-        app:srcCompat="@drawable/baseline_undo_24"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/undo"-->
+<!--        android:layout_width="83dp"-->
+<!--        android:layout_height="88dp"-->
+<!--        android:layout_marginStart="60dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.454"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/delete"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.101"-->
+<!--        app:srcCompat="@drawable/baseline_undo_24"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
     <ImageButton
         android:id="@+id/tutorial"
