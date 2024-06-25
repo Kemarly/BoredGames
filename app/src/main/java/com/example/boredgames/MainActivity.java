@@ -17,15 +17,10 @@ public class MainActivity extends AppCompatActivity {
     ImageButton HomeButton;
     ImageButton ProfileButton;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
 
         triviaButton = (ImageButton) findViewById(R.id.imageButton);
@@ -41,11 +36,7 @@ public class MainActivity extends AppCompatActivity {
         scriptscavButton.setTooltipText("Script Scavenger: How many words can you find from the letters of the word given?");
         scriptscavButton.setOnClickListener(new View.OnClickListener() {
             @Override
-
-            public void onClick(View v) {
-                openScriptScav();
-
-            }
+            public void onClick(View v) {openScriptScav();}
 
         });
 
@@ -126,5 +117,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
-
 }
