@@ -82,8 +82,19 @@ public class Sudoku extends AppCompatActivity {
     }
     public void completeGame() {
         int emptyCells = 0;
+        int wrongCells = 0;
         for (int i = 0; i < 9; i++) {for (int j = 0; j < 9; j++) {if (grid[i][j].getText().toString().isEmpty()) {emptyCells++;}}}
         score -= emptyCells;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                TextView cell = grid[i][j];
+                if (!cell.getText().toString().isEmpty()) {
+                    int userNumber = Integer.parseInt(cell.getText().toString());
+                    if (!isValid(puzzle, i, j, userNumber)) {wrongCells++;}
+                }
+            }
+        }
+        score -= wrongCells;
         if (score < 0) score = 0;
         showScore();
     }
@@ -146,17 +157,31 @@ public class Sudoku extends AppCompatActivity {
         int[][] board = new int[9][9];
         Random random = new Random();
         int filledCells = random.nextInt(6) + 20;
-
         while (filledCells > 0) {
             int row = random.nextInt(9);
             int col = random.nextInt(9);
             if (board[row][col] == 0) {
                 int num = random.nextInt(9) + 1;
-                board[row][col] = num;
-                filledCells--;
+
+                if (isValidPlacement(board, row, col, num)) {
+                    board[row][col] = num;
+                    filledCells--;
+                }
             }
         }
         return board;
+    }
+
+    private boolean isValidPlacement(int[][] board, int row, int col, int num) {
+        for (int c = 0; c < 9; c++) {if (board[row][c] == num) {return false;}}
+
+        for (int r = 0; r < 9; r++) {if (board[r][col] == num) {return false;}}
+
+        int boxRowStart = row - row % 3;
+        int boxColStart = col - col % 3;
+        for (int r = boxRowStart; r < boxRowStart + 3; r++) {
+            for (int c = boxColStart; c < boxColStart + 3; c++) {if (board[r][c] == num) {return false;}}
+        }return true;
     }
 
     private int[][] makeSolution(int[][] board) {
