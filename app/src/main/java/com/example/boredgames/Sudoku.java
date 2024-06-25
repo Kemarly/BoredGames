@@ -146,12 +146,7 @@ public class Sudoku extends AppCompatActivity {
             grid[row][col] = gridCell;
 
             int backgroundResource;
-            if (row == 0) {backgroundResource = R.drawable.top_thick;}
-            else if(row==8){backgroundResource=R.drawable.bottom_thick;}
-            else if(col==0){backgroundResource=R.drawable.left_thick;}
-            else if (col==8){backgroundResource=R.drawable.right_thick;}
-            else if(row % 3 == 0 || col % 3 == 0){backgroundResource=R.drawable.grid_line_thick;}
-            else{backgroundResource = R.drawable.grid_line_thin;}
+            backgroundResource = R.drawable.grid_line_thin;
 
             convertView.setBackgroundResource(backgroundResource);
 
