@@ -28,11 +28,15 @@ import java.util.Random;
 
 public class Sudoku extends AppCompatActivity {
     ImageButton HomeButton;
+    ImageButton SettingsButton;
+    ImageButton AchievementButton;
+    ImageButton ProfileButton;
     ImageButton tutorial;
     Button complete;
     CountDownTimer timer;
     private TextView[][] grid;
     private int [][] answers;
+    private int [][] puzzle;
     TextView gridCell;
     int score = 100;
 
@@ -42,7 +46,29 @@ public class Sudoku extends AppCompatActivity {
         setContentView(R.layout.activity_sudoku);
 
         HomeButton = findViewById(R.id.HomeButton);
+        HomeButton.setTooltipText("Home");
         HomeButton.setOnClickListener(v -> GoHome());
+
+        SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
+        SettingsButton.setTooltipText("Settings");
+        SettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openSettings();}
+        });
+
+        AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
+        AchievementButton.setTooltipText("Achievements");
+        AchievementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openAchievements();}
+        });
+
+        ProfileButton = (ImageButton) findViewById(R.id.profileIcon);
+        ProfileButton.setTooltipText("Profile");
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openProfile();}
+        });
 
         complete = findViewById(R.id.complete);
         complete.setOnClickListener(v -> completeGame());
@@ -66,7 +92,20 @@ public class Sudoku extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void openSettings(){
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
 
+    public void openAchievements(){
+        Intent intent = new Intent(this, Achievements.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(){
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
     private void resetTimer() {
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             long elapsedTime = 0;
@@ -94,19 +133,70 @@ public class Sudoku extends AppCompatActivity {
             int col = position % 9;
             userAnswers(grid[row][col]);
         });
-        answers = makePuzzle();
+        puzzle = makePuzzle();
+        answers = makeSolution(puzzle);
+        fillGrid();
     }
 
     @NonNull
     private int[][] makePuzzle() {
-        int[][] puzzle = new int[9][9];
+        int[][] board = new int[9][9];
         Random random = new Random();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                puzzle[i][j] = random.nextInt(9) + 1;
+        int filledCells = 30;
+        while (filledCells > 0) {
+            int row = random.nextInt(9);
+            int col = random.nextInt(9);
+            if (board[row][col] == 0) {
+                int num = random.nextInt(9) + 1;
+                board[row][col] = num;
+                filledCells--;
+                if (isValid(board, row, col, num)) {
+                }
             }
         }
-        return puzzle;
+        return board;
+    }
+    private int[][] makeSolution(int[][] board) {
+        int[][] solution = new int[9][9];
+        for (int i = 0; i < 9; i++) {System.arraycopy(board[i], 0, solution[i], 0, 9);}
+        solve(solution);
+        return solution;
+    }
+
+    private void fillGrid() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (puzzle[i][j] != 0) {
+                    grid[i][j].setText(String.valueOf(puzzle[i][j]));
+                    grid[i][j].setEnabled(false);
+                } else {
+                    grid[i][j].setText("");
+                    grid[i][j].setEnabled(true);
+                }
+            }
+        }
+    }
+    private boolean solve(int[][] board) {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                if (board[row][col] == 0) {
+                    for (int num = 1; num <= 9; num++) {
+                        if (isValid(board, row, col, num)) {
+                            board[row][col] = num;
+                            if (solve(board)) {return true;}
+                            board[row][col] = 0;
+                        }
+                    } return false;
+                }
+            }
+        } return true;
+    }
+    private boolean isValid(int[][] board, int row, int col, int num) {
+        for (int i = 0; i < 9; i++) {if (board[row][i] == num || board[i][col] == num) {return false;}}
+        int boxRowStart = row - row % 3;
+        int boxColStart = col - col % 3;
+        for (int r = 0; r < 3; r++) {for (int d = 0; d < 3; d++) {if (board[r + boxRowStart][d + boxColStart] == num) {return false;}}}
+        return true;
     }
 
     private void userAnswers(TextView num) {
@@ -168,6 +258,7 @@ public class Sudoku extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();}
+
     private void tutorial() {
         timer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

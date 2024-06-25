@@ -3,6 +3,7 @@ package com.example.boredgames;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,9 @@ import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
     ImageButton HomeButton;
+    ImageButton SettingsButton;
+    ImageButton AchievementButton;
+    ImageButton ProfileButton;
     ImageButton tutorial;
     CountDownTimer timer;
     EditText userInput;
@@ -38,6 +42,7 @@ public class ScriptScavenger extends AppCompatActivity {
     Button Save;
     EditText Username;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +58,31 @@ public class ScriptScavenger extends AppCompatActivity {
         resetTimer();
         timer.start();
 
-        HomeButton = findViewById(R.id.homeIcon);
+        HomeButton = findViewById(R.id.HomeButton);
+        HomeButton.setTooltipText("Home");
+
         HomeButton.setOnClickListener(v -> GoHome());
+
+        SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
+        SettingsButton.setTooltipText("Settings");
+        SettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openSettings();}
+        });
+
+        AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
+        AchievementButton.setTooltipText("Achievements");
+        AchievementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openAchievements();}
+        });
+
+        ProfileButton = (ImageButton) findViewById(R.id.profileIcon);
+        ProfileButton.setTooltipText("Profile");
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openProfile();}
+        });
 
         generateWord = findViewById(R.id.generateWord);
         String randomWord = genRandom();
@@ -77,6 +105,20 @@ public class ScriptScavenger extends AppCompatActivity {
 
     public void GoHome() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openSettings(){
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
+    public void openAchievements(){
+        Intent intent = new Intent(this, Achievements.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(){
+        Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
 
