@@ -113,7 +113,10 @@ public class Sudoku extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 elapsedTime += 1000;
                 TextView timerTextView = findViewById(R.id.Time);
-                timerTextView.setText(String.valueOf(elapsedTime / 1000));
+                int minutes = (int) (elapsedTime / 1000) / 60;
+                int seconds = (int) (elapsedTime / 1000) % 60;
+                String totalTime = String.format("%02d:%02d", minutes, seconds);
+                timerTextView.setText(totalTime);
                 if ((elapsedTime / 1000) % 10 == 0) {
                     score -= 1;
                     if (score < 0) score = 0;
@@ -126,7 +129,7 @@ public class Sudoku extends AppCompatActivity {
 
     private void makeGrid() {
         GridView gridView = findViewById(R.id.gridView);
-        SudokuAdapter adapter = new SudokuAdapter();
+        SudokuAdapter adapter = new SudokuAdapter(this);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener((parent, view, position, id) -> {
             int row = position / 9;
@@ -166,6 +169,7 @@ public class Sudoku extends AppCompatActivity {
     private void fillGrid() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
+                if(grid[i][j]!= null){
                 if (puzzle[i][j] != 0) {
                     grid[i][j].setText(String.valueOf(puzzle[i][j]));
                     grid[i][j].setEnabled(false);
@@ -173,7 +177,7 @@ public class Sudoku extends AppCompatActivity {
                     grid[i][j].setText("");
                     grid[i][j].setEnabled(true);
                 }
-            }
+            }}
         }
     }
     private boolean solve(int[][] board) {
@@ -215,6 +219,12 @@ public class Sudoku extends AppCompatActivity {
     }
 
     private class SudokuAdapter extends BaseAdapter {
+        private Context context;
+
+        SudokuAdapter(Context context) {
+            this.context = context;
+        }
+
         @Override
         public int getCount() { return 81; }
         @NonNull
