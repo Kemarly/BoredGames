@@ -50,6 +50,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
+
 public class Profile extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;

@@ -9,11 +9,12 @@
 
     <GridView
         android:id="@+id/gridView"
-        android:layout_width="676dp"
-        android:layout_height="610dp"
+        android:layout_width="670dp"
+        android:layout_height="707dp"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:horizontalSpacing="1dp"
+        android:listSelector="@color/darkYellow"
         android:numColumns="9"
         android:stretchMode="columnWidth"
         android:verticalSpacing="1dp"
@@ -23,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintVertical_bias="0.479" />
 
     <TextView
         android:id="@+id/Time"
@@ -38,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27"
+        app:layout_constraintVertical_bias="0.432"
         tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
@@ -113,31 +114,31 @@
         app:srcCompat="@drawable/img_6"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageButton
-        android:id="@+id/delete"
-        android:layout_width="81dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="204dp"
-        android:src="@drawable/baseline_delete_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/delete"-->
+<!--        android:layout_width="81dp"-->
+<!--        android:layout_height="86dp"-->
+<!--        android:layout_marginStart="204dp"-->
+<!--        android:src="@drawable/baseline_delete_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.102"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
-    <ImageButton
-        android:id="@+id/undo"
-        android:layout_width="83dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toEndOf="@+id/delete"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145"
-        app:srcCompat="@drawable/baseline_undo_24"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/undo"-->
+<!--        android:layout_width="83dp"-->
+<!--        android:layout_height="88dp"-->
+<!--        android:layout_marginStart="60dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.454"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/delete"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.101"-->
+<!--        app:srcCompat="@drawable/baseline_undo_24"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
     <ImageButton
         android:id="@+id/tutorial"
@@ -153,5 +154,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001" />
+
+    <Button
+        android:id="@+id/complete"
+        android:layout_width="345dp"
+        android:layout_height="84dp"
+        android:background="@color/darkYellow"
+        android:text="Complete"
+        android:textAlignment="center"
+        android:textColor="@color/navy"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.841" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

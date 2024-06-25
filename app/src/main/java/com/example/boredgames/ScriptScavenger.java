@@ -26,6 +26,9 @@ import java.util.Random;
 
 public class ScriptScavenger extends AppCompatActivity {
     ImageButton HomeButton;
+    ImageButton SettingsButton;
+    ImageButton AchievementButton;
+    ImageButton ProfileButton;
     ImageButton tutorial;
     CountDownTimer timer;
     EditText userInput;
@@ -56,9 +59,29 @@ public class ScriptScavenger extends AppCompatActivity {
         timer.start();
 
         HomeButton = findViewById(R.id.homeIcon);
+        HomeButton.setTooltipText("Home");
         HomeButton.setOnClickListener(v -> GoHome());
 
+        SettingsButton = (ImageButton) findViewById(R.id.settingsIcon);
+        SettingsButton.setTooltipText("Settings");
+        SettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openSettings();}
+        });
 
+        AchievementButton = (ImageButton) findViewById(R.id.TrophyIcon);
+        AchievementButton.setTooltipText("Achievements");
+        AchievementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openAchievements();}
+        });
+
+        ProfileButton = (ImageButton) findViewById(R.id.profileIcon);
+        ProfileButton.setTooltipText("Profile");
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openProfile();}
+        });
 
         generateWord = findViewById(R.id.generateWord);
         String randomWord = genRandom();
@@ -83,7 +106,20 @@ public class ScriptScavenger extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void openSettings(){
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
 
+    public void openAchievements(){
+        Intent intent = new Intent(this, Achievements.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(){
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
     private void resetTimer() {
         timer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
@@ -111,36 +147,36 @@ public class ScriptScavenger extends AppCompatActivity {
             score = 0;
         });
         builder.setNegativeButton("Save Score", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Username = (EditText) findViewById(R.id.Prompt);
+                Username.setVisibility(View.VISIBLE);
+
+
+                Save = (Button) findViewById(R.id.SaveScore);
+                Save.setVisibility(View.VISIBLE);
+                String UserInput = Username.getText().toString();
+                Save.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        Username = (EditText) findViewById(R.id.Prompt);
-                        Username.setVisibility(View.VISIBLE);
-
-
-                        Save = (Button) findViewById(R.id.SaveScore);
-                        Save.setVisibility(View.VISIBLE);
+                    public void onClick(View v) {
                         String UserInput = Username.getText().toString();
-                        Save.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                String UserInput = Username.getText().toString();
-                                if(!UserInput.isEmpty()){
+                        if(!UserInput.isEmpty()){
 
-                                    generateWord.setText("Score has been saved for " + UserInput);
-                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference reference = database.getReference("scores");
+                            generateWord.setText("Score has been saved for " + UserInput);
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("scores");
 
-                                    reference.child("ScriptScavenger Scores").child(UserInput).setValue(score);
-                                }
-                                else{
-                                    Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                            reference.child("ScriptScavenger Scores").child(UserInput).setValue(score);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "Please enter a valid username", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
-                AlertDialog dialog = builder.create();
+            }
+        });
+        AlertDialog dialog = builder.create();
         dialog.show();
     }
 
